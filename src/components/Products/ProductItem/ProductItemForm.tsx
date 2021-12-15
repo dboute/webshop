@@ -3,14 +3,14 @@ import { useRef, useState } from 'react';
 import Input from '../../UI/Input';
 import classes from './ProductItemForm.module.css';
 
-const ProductItemForm = (props) => {
+const ProductItemForm = (props: any) => {
   const [amountIsValid, setAmountIsValid] = useState(true);
-  const amountInputRef = useRef();
+  const amountInputRef = useRef<any>();
 
-  const submitHandler = (event) => {
+  const submitHandler = (event: any) => {
     event.preventDefault();
 
-    const enteredAmount = amountInputRef.current.value;
+    const enteredAmount = amountInputRef.current?.value;
     const enteredAmountNumber = +enteredAmount;
 
     if (

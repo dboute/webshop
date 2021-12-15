@@ -1,8 +1,8 @@
-.meals {
+.products {
   max-width: 60rem;
   width: 90%;
   margin: 2rem auto;
-  animation: meals-appear 1s ease-out forwards;
+  animation: products-appear 1s ease-out forwards;
 }
 
 .MealsLoading {
@@ -15,13 +15,19 @@
   color: red;
 }
 
-.meals ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+.products ul {
+    flex-direction: column;
+    flex-wrap: wrap;
+    display: flex;
+    height: 100vh;
+}
+.products ul li {
+    flex: 1 0 25%;
 }
 
-@keyframes meals-appear {
+
+
+@keyframes products-appear {
   from {
     opacity: 0;
     transform: translateY(3rem);

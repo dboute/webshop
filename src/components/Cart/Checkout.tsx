@@ -13,15 +13,15 @@ const Checkout = (props) => {
     postalCode: true,
   });
 
-  const nameInputRef = useRef();
-  const streetInputRef = useRef();
-  const postalCodeInputRef = useRef();
-  const cityInputRef = useRef();
+  const nameInputRef = useRef<any>();
+  const streetInputRef = useRef<any>();
+  const postalCodeInputRef = useRef<any>();
+  const cityInputRef = useRef<any>();
 
   const confirmHandler = (event) => {
     event.preventDefault();
 
-    const enteredName = nameInputRef.current.value;
+    const enteredName = nameInputRef?.current?.value;
     const enteredStreet = streetInputRef.current.value;
     const enteredPostalCode = postalCodeInputRef.current.value;
     const enteredCity = cityInputRef.current.value;
