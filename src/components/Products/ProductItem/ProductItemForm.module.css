@@ -5,9 +5,9 @@
 .form button {
   font: inherit;
   cursor: pointer;
-  background-color: #fff;
-  border: 1px solid #fff;
-  color: white;
+  background-color: #cc8e84;
+  border: 1px solid #cc8e84;
+  color: #ffffff;
   padding: 0.25rem 2rem;
   border-radius: 20px;
   font-weight: bold;

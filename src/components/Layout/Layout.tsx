@@ -4,6 +4,8 @@ import classes from './Layout.module.css';
 import MainNavigation from './MainNavigation';
 import Cart from "../Cart/Cart";
 import CartProvider from "../../store/CartProvider";
+import Footer from "../UI/Footer";
+import Logo from "./Logo";
 
 
 const Layout = (props) => {
@@ -20,9 +22,11 @@ const Layout = (props) => {
     return (
         <Fragment>
             <CartProvider>
+                <Logo />
                 <MainNavigation onShowCart={showCartHandler}/>
                 {cartIsShown && <Cart onClose={hideCartHandler}/>}
                 <main className={classes.main}>{props.children}</main>
+                <Footer/>
             </CartProvider>
         </Fragment>
     );

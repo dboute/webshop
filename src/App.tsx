@@ -1,6 +1,6 @@
-import Products from './components/Products/Products';
-import { Route, Switch } from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
 import Layout from "./components/Layout/Layout";
+import Home from "./components/Home/Home";
 
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
         <Layout>
             <Switch>
                 <Route path='/' exact>
-                    <Products/>
+                    <Home/>
                 </Route>
             </Switch>
         </Layout>

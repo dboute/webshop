@@ -1,9 +1,8 @@
 import {useEffect, useState} from 'react';
-import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
+import {createStyles, makeStyles, Theme} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import ProductItem from './ProductItem/ProductItem';
 import classes from './AvailableProducts.module.css';
-import {Paper} from "@material-ui/core";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -21,12 +20,12 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 const AvailableProducts = () => {
-    const [products, setMeals] = useState<any>([]);
+    const [products, setProducts] = useState<any>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [httpError, setHttpError] = useState();
 
     useEffect(() => {
-        const fetchMeals = async () => {
+        const fetchProducts = async () => {
             const response = await fetch('https://webshop-c8940-default-rtdb.europe-west1.firebasedatabase.app/products.json');
 
             if (!response.ok) {
@@ -35,56 +34,56 @@ const AvailableProducts = () => {
 
             const responseData = await response.json();
 
-            const loadedMeals : object[] = [];
+            const loadedProducts: object[] = [];
 
             for (const key in responseData) {
-                loadedMeals.push({
+                loadedProducts.push({
                     id: key,
                     name: responseData[key].name,
                     description: responseData[key].description,
                     price: responseData[key].price,
+                    picture: responseData[key].picture,
                 });
             }
 
-            setMeals(loadedMeals);
+            setProducts(loadedProducts);
             setIsLoading(false);
         };
 
-        fetchMeals().catch((error) => {
+        fetchProducts().catch((error) => {
             setIsLoading(false);
             setHttpError(error.message);
         });
     }, []);
 
     if (isLoading) {
-        return (<section className={classes.MealsLoading}>
-                <p>Loading...</p>
-            </section>);
+        return (<section className={classes.ProductsLoading}>
+            <p>Loading...</p>
+        </section>);
     }
 
     if (httpError) {
-        return (<section className={classes.MealsError}>
-                <p>{httpError}</p>
-            </section>);
+        return (<section className={classes.ProductsError}>
+            <p>{httpError}</p>
+        </section>);
     }
 
-    const mealsList = products.map((product) => (<ProductItem
-            key={product.id}
-            id={product.id}
-            name={product.name}
-            description={product.description}
-            price={product.price}
-        />));
+    const productsList = products.map((product) => (<ProductItem
+        key={product.id}
+        id={product.id}
+        name={product.name}
+        description={product.description}
+        price={product.price}
+        picture={product.picture}
+    />));
 
     return (<section className={classes.products}>
-            <Grid container justifyContent="center" spacing={1}>
-                {mealsList.map((value) => (<Grid key={value} item>
-                        <Paper className={classes.paper}>
-                            {value}
-                        </Paper>
-                    </Grid>))}
-            </Grid>
-        </section>);
+        <Grid container justifyContent="center" spacing={1}>
+            {productsList.map((value) => (<Grid key={value} item>
+                {value}
+            </Grid>))}
+        </Grid>
+    </section>);
 };
 
 export default AvailableProducts;

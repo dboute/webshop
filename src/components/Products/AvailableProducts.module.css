@@ -1,16 +1,15 @@
 .products {
-  max-width: 60rem;
   width: 90%;
   margin: 2rem auto;
   animation: products-appear 1s ease-out forwards;
 }
 
-.MealsLoading {
+.ProductsLoading {
   text-align: center;
   color: white;
 }
 
-.MealsError {
+.ProductsError {
   text-align: center;
   color: red;
 }
