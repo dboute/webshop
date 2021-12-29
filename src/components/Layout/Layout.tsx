@@ -6,6 +6,7 @@ import Cart from "../Cart/Cart";
 import CartProvider from "../../store/CartProvider";
 import Footer from "../UI/Footer";
 import Logo from "./Logo";
+import HeaderCartButton from "./HeaderCartButton";
 
 
 const Layout = (props) => {
@@ -22,6 +23,7 @@ const Layout = (props) => {
     return (
         <Fragment>
             <CartProvider>
+                <HeaderCartButton />
                 <Logo />
                 <MainNavigation onShowCart={showCartHandler}/>
                 {cartIsShown && <Cart onClose={hideCartHandler}/>}

@@ -1,13 +1,17 @@
 import Products from './components/Products/Products';
-import { Route, Switch } from 'react-router-dom';
+import {Redirect, Route, Switch} from 'react-router-dom';
 import Layout from "./components/Layout/Layout";
 import 'bootstrap';
 import './index.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { library, dom } from '@fortawesome/fontawesome-svg-core'
-import { fas } from '@fortawesome/free-solid-svg-icons'
-import { far } from '@fortawesome/free-regular-svg-icons'
-import { fab } from '@fortawesome/free-brands-svg-icons'
+import {dom, library} from '@fortawesome/fontawesome-svg-core'
+import {fas} from '@fortawesome/free-solid-svg-icons'
+import {far} from '@fortawesome/free-regular-svg-icons'
+import {fab} from '@fortawesome/free-brands-svg-icons'
+import NotFound from "./pages/Home/NotFound";
+import Home from "./pages/Home/Home";
+import AboutUs from "./pages/AboutUs/AboutUs";
+import Contact from "./pages/Contact/Contact";
 
 
 function App() {
@@ -17,7 +21,21 @@ function App() {
         <Layout>
             <Switch>
                 <Route path='/' exact>
+                    <Redirect to='/home'/>
+                </Route>
+                <Route path='/home' exact>
+                    <Home/>
+                </Route>
+                <Route path='/shop' exact>
                     <Products/>
+                </Route>
+                <Route path='/contact' exact>
+                    <Contact/>
+                </Route> <Route path='/about-us' exact>
+                    <AboutUs/>
+            </Route>
+                <Route path='*'>
+                    <NotFound/>
                 </Route>
             </Switch>
         </Layout>

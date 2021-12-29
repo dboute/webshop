@@ -1,10 +1,12 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { NavLink } from 'react-router-dom';
-import { faFacebookF, faTwitter, faLinkedin, faInstagram, faGoogle } from '@fortawesome/free-brands-svg-icons';
-import { faRainbow, faHome, faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {NavLink} from 'react-router-dom';
+import {faFacebookF, faGoogle, faInstagram, faLinkedin, faTwitter} from '@fortawesome/free-brands-svg-icons';
+import {faEnvelope, faHome, faPhone, faRainbow} from '@fortawesome/free-solid-svg-icons';
+import classes from './Footer.module.css';
 
 
 const Footer = props => {
+
     return (
 
         <footer className="text-center text-lg-start bg-light text-muted">
@@ -13,21 +15,21 @@ const Footer = props => {
                     <span>Get connected with us on social networks:</span>
                 </div>
                 <div>
-                    <NavLink to='/' className="me-4 text-reset">
-                        <FontAwesomeIcon icon={faFacebookF} />
-                    </NavLink>
-                    <NavLink to='/' className="me-4 text-reset">
-                        <FontAwesomeIcon icon={faTwitter} />
-                    </NavLink>
-                    <NavLink to='/' className="me-4 text-reset">
-                        <FontAwesomeIcon icon={faGoogle} />
-                    </NavLink>
-                    <NavLink to='/' className="me-4 text-reset">
-                        <FontAwesomeIcon icon={faInstagram} />
-                    </NavLink>
-                    <NavLink to='/' className="me-4 text-reset">
-                        <FontAwesomeIcon icon={faLinkedin} />
-                    </NavLink>
+                    <a href='https://www.linkedin.com/' className="me-4 text-reset">
+                        <FontAwesomeIcon icon={faFacebookF}/>
+                    </a>
+                    <a href='https://www.linkedin.com/' className="me-4 text-reset">
+                        <FontAwesomeIcon icon={faTwitter}/>
+                    </a>
+                    <a href='https://www.linkedin.com/' className="me-4 text-reset">
+                        <FontAwesomeIcon icon={faGoogle}/>
+                    </a>
+                    <a href='https://www.linkedin.com/' className="me-4 text-reset">
+                        <FontAwesomeIcon icon={faInstagram}/>
+                    </a>
+                    <a href='https://www.linkedin.com/' className="me-4 text-reset">
+                        <FontAwesomeIcon icon={faLinkedin}/>
+                    </a>
                 </div>
             </section>
             <section>
@@ -47,22 +49,22 @@ const Footer = props => {
                                 Products
                             </h6>
                             <p>
-                                <NavLink to='/' className="text-reset">
+                                <NavLink to='/shop' className={classes.link}>
                                     Nestjes
                                 </NavLink>
                             </p>
                             <p>
-                                <NavLink to='/' className="text-reset">
+                                <NavLink to='/shop' className={classes.link}>
                                     Dekentjes
                                 </NavLink>
                             </p>
                             <p>
-                                <NavLink to='/' className="text-reset">
+                                <NavLink to='/shop' className={classes.link}>
                                     Tuttenkoorden
                                 </NavLink>
                             </p>
                             <p>
-                                <NavLink to='/' className="text-reset">
+                                <NavLink to='/shop' className={classes.link}>
                                     Rammelaars
                                 </NavLink>
                             </p>
@@ -72,22 +74,22 @@ const Footer = props => {
                                 Useful links
                             </h6>
                             <p>
-                                <NavLink to='/' className="text-reset">
+                                <NavLink to='/shop' className={classes.link}>
                                     Pricing
                                 </NavLink>
                             </p>
                             <p>
-                                <NavLink to='/' className="text-reset">
+                                <NavLink to='/shop' className={classes.link}>
                                     Settings
                                 </NavLink>
                             </p>
                             <p>
-                                <NavLink to='/' className="text-reset">
+                                <NavLink to='/shop' className={classes.link}>
                                     Orders
                                 </NavLink>
                             </p>
                             <p>
-                                <NavLink to='/' className="text-reset">
+                                <NavLink to='/shop' className={classes.link}>
                                     Help
                                 </NavLink>
                             </p>
@@ -96,19 +98,20 @@ const Footer = props => {
                             <h6 className="text-uppercase fw-bold mb-4">
                                 Contact
                             </h6>
-                            <p><FontAwesomeIcon icon={faHome} className='me-3'/>  Camille Coolsstraat <br /> 15 8890 Moorslede</p>
+                            <p><FontAwesomeIcon icon={faHome} className='me-3'/> Camille Coolsstraat <br/> 15 8890
+                                Moorslede</p>
                             <p>
                                 <FontAwesomeIcon icon={faEnvelope} className='me-3'/>
                                 info@littlemomster.com
                             </p>
-                            <p> <FontAwesomeIcon icon={faPhone} className='me-3'/> 0468 13 72 29</p>
+                            <p><FontAwesomeIcon icon={faPhone} className='me-3'/> 0468 13 72 29</p>
                         </div>
                     </div>
                 </div>
             </section>
             <div className="text-center p-4" style={{backgroundColor: 'rgba(0, 0, 0, 0.05)'}}>
-                © 2021 Copyright:
-                <a className="text-reset fw-bold">Little Momster</a>
+                © 2022 Copyright:
+                <NavLink to ='/' className={classes.link}> Little Momster</NavLink>
             </div>
         </footer>
     );

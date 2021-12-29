@@ -1,50 +1,50 @@
-import { NavLink } from 'react-router-dom';
-
+import {NavLink} from 'react-router-dom';
 import classes from './MainNavigation.module.scss';
-import HeaderCartButton from './HeaderCartButton';
+import $ from 'jquery';
 
 const MainNavigation = (props) => {
-  return (
-      <nav className='navbar navbar-expand-lg navbar-light white'>
-          <div className='container-fluid'>
-              <NavLink to='/' className='navbar-brand'>
-                  Home
-              </NavLink>
-              <button className='navbar-toggler' type='button' data-bs-toggle='collapse'
-                      data-bs-target='#navbarNavLightDropdown' aria-controls='navbarNavLightDropdown'
-                      aria-expanded='false' aria-label='Toggle navigation'>
-                  <span className='navbar-toggler-icon'></span>
-              </button>
-              <div className='collapse navbar-collapse' id='navbarNavLightDropdown'>
-                  <ul className='navbar-nav'>
-                      <li className='nav-item dropdown'>
-                          <NavLink to='/' className='nav-link dropdown-toggle' id='navbarLightDropdownMenuLink' role='button'
-                                   data-bs-toggle='dropdown' aria-expanded='false'>
-                              Shop
-                          </NavLink>
-                          <ul className='dropdown-menu dropdown-menu-light' aria-labelledby='navbarLightDropdownMenuLink'>
-                              <li><NavLink to='/' className='dropdown-item text-reset'>
-                                  Speenkoorden
-                              </NavLink></li>
-                              <li><NavLink to='/' className='dropdown-item text-reset'>
-                                  Nestjes
-                              </NavLink></li>
-                              <li><NavLink to='/' className='dropdown-item text-reset'>
-                                  Rammelaars
-                              </NavLink></li>
-                              <li><NavLink to='/' className='dropdown-item text-reset'>
-                                  Speendoekjes
-                              </NavLink></li>
-                              <li><NavLink to='/' className='dropdown-item text-reset'>
-                                  Dekentjes
-                              </NavLink></li>
-                          </ul>
-                      </li>
-                  </ul>
-              </div>
-          </div>
-      </nav>
-  );
+
+    const hideDropDown = () => {
+        $('.dropdown-menu').removeClass('show');
+    }
+
+    return (
+        <ul className="nav justify-content-center">
+            <li className="nav-item">
+                <NavLink to='/home' className={classes.link}>Home</NavLink>
+            </li>
+            <li className="nav-item dropdown">
+                <NavLink to='/shop' className='nav-link link-dark dropdown-toggle' id='navbarDropdownMenuLink'
+                         role='button'
+                         data-bs-toggle='dropdown' aria-expanded='false'>
+                    Shop
+                </NavLink>
+                <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li><NavLink to='/shop' onClick={hideDropDown} className={classes.dropdownItem}>
+                        Speenkoorden
+                    </NavLink></li>
+                    <li><NavLink to='/shop' onClick={hideDropDown} className={classes.dropdownItem}>
+                        Nestjes
+                    </NavLink></li>
+                    <li><NavLink to='/shop' onClick={hideDropDown} className={classes.dropdownItem}>
+                        Rammelaars
+                    </NavLink></li>
+                    <li><NavLink to='/shop' onClick={hideDropDown} className={classes.dropdownItem}>
+                        Speendoekjes
+                    </NavLink></li>
+                    <li><NavLink to='/shop' onClick={hideDropDown} className={classes.dropdownItem}>
+                        Dekentjes
+                    </NavLink></li>
+                </ul>
+            </li>
+            <li className="nav-item">
+                <NavLink to='/contact' className={classes.link}>Contact</NavLink>
+            </li>
+            <li className="nav-item">
+                <NavLink to='/about-us' className={classes.link}>Over ons</NavLink>
+            </li>
+        </ul>
+    );
 };
 
 export default MainNavigation;
