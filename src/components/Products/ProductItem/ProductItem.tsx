@@ -1,6 +1,7 @@
 import {useContext} from 'react';
+import {NavLink} from 'react-router-dom';
 
-import ProductItemForm from './ProductItemForm';
+
 import classes from './ProductItem.module.css';
 import CartContext from '../../../store/cart-context';
 
@@ -23,10 +24,13 @@ const ProductItem = (props: any) => {
         <li className={classes.product}>
             <div>
                 <h3>{props.name}</h3>
-                <div className={classes.description}>{props.description}</div>
-                <img width='100px' height='100px' src={`${firebaseUrl}${props.picture}`} alt={props.description} />
+                {/*<div className={classes.description}>{props.description}</div>*/}
+                <NavLink to={`/products/${props.id}`}>
+                    <img width='150px' height='150px' src={`${firebaseUrl}${props.picture}`} alt={props.description}/>
+                </NavLink>
                 <div className={classes.price}>{price}</div>
-                <ProductItemForm onAddToCart={addToCartHandler}/>
+
+                {/*<ProductItemForm onAddToCart={addToCartHandler}/>*/}
             </div>
         </li>
     );

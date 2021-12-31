@@ -23,9 +23,9 @@ const Layout = (props) => {
     return (
         <Fragment>
             <CartProvider>
-                <HeaderCartButton />
+                <HeaderCartButton onClick={showCartHandler}/>
                 <Logo />
-                <MainNavigation onShowCart={showCartHandler}/>
+                <MainNavigation/>
                 {cartIsShown && <Cart onClose={hideCartHandler}/>}
                 <main className={classes.main}>{props.children}</main>
                 <Footer/>

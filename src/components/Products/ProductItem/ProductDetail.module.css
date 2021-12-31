@@ -1,0 +1,22 @@
+.products {
+    width: 90%;
+    margin: 2rem auto;
+    animation: products-appear 1s ease-out forwards;
+}
+
+.products ul {
+    flex-direction: column;
+    flex-wrap: wrap;
+    display: flex;
+    height: 100vh;
+}
+.products ul li {
+    flex: 1 0 25%;
+}
+
+.price {
+    margin-top: 0.25rem;
+    font-weight: bold;
+    color: black;
+    font-size: 1.25rem;
+}

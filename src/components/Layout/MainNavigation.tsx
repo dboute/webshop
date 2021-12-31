@@ -14,25 +14,25 @@ const MainNavigation = (props) => {
                 <NavLink to='/home' className={classes.link}>Home</NavLink>
             </li>
             <li className="nav-item dropdown">
-                <NavLink to='/shop' className='nav-link link-dark dropdown-toggle' id='navbarDropdownMenuLink'
+                <NavLink to='/products' className='nav-link link-dark dropdown-toggle' id='navbarDropdownMenuLink'
                          role='button'
                          data-bs-toggle='dropdown' aria-expanded='false'>
                     Shop
                 </NavLink>
                 <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <li><NavLink to='/shop' onClick={hideDropDown} className={classes.dropdownItem}>
+                    <li><NavLink to='/products' onClick={hideDropDown} className={classes.dropdownItem}>
                         Speenkoorden
                     </NavLink></li>
-                    <li><NavLink to='/shop' onClick={hideDropDown} className={classes.dropdownItem}>
+                    <li><NavLink to='/products' onClick={hideDropDown} className={classes.dropdownItem}>
                         Nestjes
                     </NavLink></li>
-                    <li><NavLink to='/shop' onClick={hideDropDown} className={classes.dropdownItem}>
+                    <li><NavLink to='/products' onClick={hideDropDown} className={classes.dropdownItem}>
                         Rammelaars
                     </NavLink></li>
-                    <li><NavLink to='/shop' onClick={hideDropDown} className={classes.dropdownItem}>
+                    <li><NavLink to='/products' onClick={hideDropDown} className={classes.dropdownItem}>
                         Speendoekjes
                     </NavLink></li>
-                    <li><NavLink to='/shop' onClick={hideDropDown} className={classes.dropdownItem}>
+                    <li><NavLink to='/products' onClick={hideDropDown} className={classes.dropdownItem}>
                         Dekentjes
                     </NavLink></li>
                 </ul>

@@ -12,6 +12,7 @@ import NotFound from "./pages/Home/NotFound";
 import Home from "./pages/Home/Home";
 import AboutUs from "./pages/AboutUs/AboutUs";
 import Contact from "./pages/Contact/Contact";
+import ProductDetail from "./components/Products/ProductItem/ProductDetail";
 
 
 function App() {
@@ -26,8 +27,11 @@ function App() {
                 <Route path='/home' exact>
                     <Home/>
                 </Route>
-                <Route path='/shop' exact>
+                <Route path='/products' exact>
                     <Products/>
+                </Route>
+                <Route path='/products/:productId'>
+                    <ProductDetail/>
                 </Route>
                 <Route path='/contact' exact>
                     <Contact/>

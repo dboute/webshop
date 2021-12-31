@@ -3,6 +3,7 @@ import {createStyles, makeStyles, Theme} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import ProductItem from './ProductItem/ProductItem';
 import classes from './AvailableProducts.module.css';
+import LoadingSpinner from "../UI/LoadingSpinner";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -58,7 +59,7 @@ const AvailableProducts = () => {
 
     if (isLoading) {
         return (<section className={classes.ProductsLoading}>
-            <p>Loading...</p>
+            <LoadingSpinner />
         </section>);
     }
 

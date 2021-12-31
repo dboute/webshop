@@ -5,7 +5,7 @@ import {faEnvelope, faHome, faPhone, faRainbow} from '@fortawesome/free-solid-sv
 import classes from './Footer.module.css';
 
 
-const Footer = props => {
+const Footer = () => {
 
     return (
 
@@ -49,22 +49,22 @@ const Footer = props => {
                                 Products
                             </h6>
                             <p>
-                                <NavLink to='/shop' className={classes.link}>
+                                <NavLink to='/products' className={classes.link}>
                                     Nestjes
                                 </NavLink>
                             </p>
                             <p>
-                                <NavLink to='/shop' className={classes.link}>
+                                <NavLink to='/products' className={classes.link}>
                                     Dekentjes
                                 </NavLink>
                             </p>
                             <p>
-                                <NavLink to='/shop' className={classes.link}>
+                                <NavLink to='/products' className={classes.link}>
                                     Tuttenkoorden
                                 </NavLink>
                             </p>
                             <p>
-                                <NavLink to='/shop' className={classes.link}>
+                                <NavLink to='/products' className={classes.link}>
                                     Rammelaars
                                 </NavLink>
                             </p>
@@ -74,22 +74,22 @@ const Footer = props => {
                                 Useful links
                             </h6>
                             <p>
-                                <NavLink to='/shop' className={classes.link}>
+                                <NavLink to='/products' className={classes.link}>
                                     Pricing
                                 </NavLink>
                             </p>
                             <p>
-                                <NavLink to='/shop' className={classes.link}>
+                                <NavLink to='/products' className={classes.link}>
                                     Settings
                                 </NavLink>
                             </p>
                             <p>
-                                <NavLink to='/shop' className={classes.link}>
+                                <NavLink to='/products' className={classes.link}>
                                     Orders
                                 </NavLink>
                             </p>
                             <p>
-                                <NavLink to='/shop' className={classes.link}>
+                                <NavLink to='/products' className={classes.link}>
                                     Help
                                 </NavLink>
                             </p>

@@ -1,9 +1,12 @@
 import React from 'react';
-
-import classes from './AboutUs.module.css';
+import Grid from "@material-ui/core/Grid";
 
 const AboutUs = (props) => {
-    return <div>About us</div>;
+    return <section>
+        <Grid container justifyContent="center" spacing={1}>
+            <div>About us</div>
+        </Grid>
+    </section>;
 };
 
 export default AboutUs;
