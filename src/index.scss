@@ -54,3 +54,14 @@ body {
   background-color: #000000;
   color: white;
 }
+
+a#basic-nav-dropdown{
+  color: #212529!important;
+  text-decoration: none!important;
+  background-color: transparent!important;
+}
+
+.dropdown-item.active, .dropdown-item:active {
+  text-decoration: none;
+  background-color: transparent!important;
+}

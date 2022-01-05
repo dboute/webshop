@@ -4,6 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import ProductItem from './ProductItem/ProductItem';
 import classes from './AvailableProducts.module.css';
 import LoadingSpinner from "../UI/LoadingSpinner";
+import {getAvailableProducts} from "../../api/products/get-available-products";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -27,14 +28,7 @@ const AvailableProducts = () => {
 
     useEffect(() => {
         const fetchProducts = async () => {
-            const response = await fetch('https://webshop-c8940-default-rtdb.europe-west1.firebasedatabase.app/products.json');
-
-            if (!response.ok) {
-                throw new Error('Something went wrong!');
-            }
-
-            const responseData = await response.json();
-
+            var responseData = (await getAvailableProducts()).productResources;
             const loadedProducts: object[] = [];
 
             for (const key in responseData) {

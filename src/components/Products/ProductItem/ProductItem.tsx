@@ -26,7 +26,7 @@ const ProductItem = (props: any) => {
                 <h3>{props.name}</h3>
                 {/*<div className={classes.description}>{props.description}</div>*/}
                 <NavLink to={`/products/${props.id}`}>
-                    <img width='150px' height='150px' src={`${firebaseUrl}${props.picture}`} alt={props.description}/>
+                    <img width='200px' height='200px' src={`${firebaseUrl}${props.picture}`} alt={props.description}/>
                 </NavLink>
                 <div className={classes.price}>{price}</div>
 
