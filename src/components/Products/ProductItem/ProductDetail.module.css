@@ -2,21 +2,39 @@
     width: 90%;
     margin: 2rem auto;
     animation: products-appear 1s ease-out forwards;
+    font-size: 1.5rem;
 }
 
-.products ul {
-    flex-direction: column;
-    flex-wrap: wrap;
-    display: flex;
-    height: 100vh;
-}
-.products ul li {
-    flex: 1 0 25%;
+.detail {
+    padding-top:48px;
+    padding-left:48px;
 }
 
 .price {
-    margin-top: 0.25rem;
-    font-weight: bold;
-    color: black;
-    font-size: 1.25rem;
+    /*font-weight: 200;*/
+    /*font-size: 16px;*/
+    margin-bottom: 1rem;
+    margin-top: 1rem;
 }
+
+.image {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.color {
+    /*font-weight: 900;*/
+    /*font-size: 16px;*/
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+/*.red:before {*/
+/*    color: red;*/
+/*}*/
+
+/*.blue:before {*/
+/*    color: blue;*/
+/*}*/

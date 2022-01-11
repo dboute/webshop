@@ -13,7 +13,7 @@ import Home from "./pages/Home/Home";
 import AboutUs from "./pages/AboutUs/AboutUs";
 import Contact from "./pages/Contact/Contact";
 import ProductDetail from "./components/Products/ProductItem/ProductDetail";
-
+import React from "react";
 
 function App() {
     library.add(fas, far, fab);
@@ -31,12 +31,12 @@ function App() {
                     <Products/>
                 </Route>
                 <Route path='/products/:productId'>
-                    <ProductDetail />
+                    <ProductDetail/>
                 </Route>
                 <Route path='/contact' exact>
                     <Contact/>
                 </Route> <Route path='/about-us' exact>
-                    <AboutUs/>
+                <AboutUs/>
             </Route>
                 <Route path='*'>
                     <NotFound/>

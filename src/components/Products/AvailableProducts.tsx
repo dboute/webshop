@@ -32,53 +32,58 @@ const AvailableProducts = () => {
             const loadedProducts: object[] = [];
 
             for (const key in responseData) {
+                if (responseData[key].preview) {
                 loadedProducts.push({
                     id: key,
                     name: responseData[key].name,
-                    description: responseData[key].description,
                     price: responseData[key].price,
                     picture: responseData[key].picture,
+                    color: responseData[key].color,
                 });
             }
+        }
 
-            setProducts(loadedProducts);
-            setIsLoading(false);
-        };
+        setProducts(loadedProducts);
+        setIsLoading(false);
+    };
 
-        fetchProducts().catch((error) => {
-            setIsLoading(false);
-            setHttpError(error.message);
-        });
-    }, []);
+    fetchProducts().catch((error) => {
+        setIsLoading(false);
+        setHttpError(error.message);
+    });
+}, []
+)
+;
 
-    if (isLoading) {
-        return (<section className={classes.ProductsLoading}>
-            <LoadingSpinner />
-        </section>);
-    }
-
-    if (httpError) {
-        return (<section className={classes.ProductsError}>
-            <p>{httpError}</p>
-        </section>);
-    }
-
-    const productsList = products.map((product) => (<ProductItem
-        key={product.id}
-        id={product.id}
-        name={product.name}
-        description={product.description}
-        price={product.price}
-        picture={product.picture}
-    />));
-
-    return (<section className={classes.products}>
-        <Grid container justifyContent="center" spacing={1}>
-            {productsList.map((value) => (<Grid key={value} item>
-                {value}
-            </Grid>))}
-        </Grid>
+if (isLoading) {
+    return (<section className={classes.ProductsLoading}>
+        <LoadingSpinner/>
     </section>);
-};
+}
+
+if (httpError) {
+    return (<section className={classes.ProductsError}>
+        <p>{httpError}</p>
+    </section>);
+}
+
+const productsList = products.map((product) => (<ProductItem
+    key={product.id}
+    id={product.id}
+    name={product.name}
+    preview={product.preview}
+    price={product.price}
+    picture={product.picture}
+/>));
+
+return (<section className={classes.products}>
+    <Grid container justifyContent="center" spacing={1}>
+        {productsList.map((value) => (<Grid key={value} item>
+            {value}
+        </Grid>))}
+    </Grid>
+</section>);
+}
+;
 
 export default AvailableProducts;

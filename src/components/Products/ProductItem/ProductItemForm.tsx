@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 
 import Input from '../../UI/Input';
 import classes from './ProductItemForm.module.css';
-import {Button} from "@material-ui/core";
+import Button from "../../UI/Button";
 
 const ProductItemForm = (props: any) => {
   const [amountIsValid, setAmountIsValid] = useState(true);
@@ -30,7 +30,7 @@ const ProductItemForm = (props: any) => {
     <form className={classes.form} onSubmit={submitHandler}>
       <Input
         ref={amountInputRef}
-        label='Amount'
+        label='Aantal'
         input={{
           id: 'amount',
           type: 'number',
@@ -40,7 +40,7 @@ const ProductItemForm = (props: any) => {
           defaultValue: '1',
         }}
       />
-      <button>+ Add</button>
+      <Button text='Bestel nu!' />
       {!amountIsValid && <p>Please enter a valid amount (1-5).</p>}
     </form>
   );

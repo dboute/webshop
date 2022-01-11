@@ -1,10 +1,11 @@
 .product {
+    text-align: center;
     display: flex;
     justify-content: space-between;
     margin: 1rem;
     padding-bottom: 1rem;
-    border-bottom: 1px solid #ccc;
-    font-family: Georgia Italic;
+    /*border-bottom: 1px solid #ccc;*/
+    font-family: "Segoe UI";
 }
 
 .product h3 {
@@ -12,12 +13,19 @@
 }
 
 .description {
+    font-size: 16px;
     font-style: italic;
+    color: #808080;
 }
 
 .price {
-    margin-top: 0.25rem;
-    font-weight: bold;
-    color: black;
-    font-size: 1.25rem;
+    font-weight: 900;
+    font-size: 16px;
+}
+
+.image {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
 }

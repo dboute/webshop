@@ -1,4 +1,4 @@
-import {Fragment, useState} from 'react';
+import React, {Fragment, useState} from 'react';
 
 import classes from './Layout.module.css';
 import MainNavigation from './MainNavigation';
@@ -7,7 +7,6 @@ import CartProvider from "../../store/CartProvider";
 import Footer from "../UI/Footer";
 import Logo from "./Logo";
 import HeaderCartButton from "./HeaderCartButton";
-
 
 const Layout = (props) => {
     const [cartIsShown, setCartIsShown] = useState(false);
@@ -24,7 +23,7 @@ const Layout = (props) => {
         <Fragment>
             <CartProvider>
                 <HeaderCartButton onClick={showCartHandler}/>
-                <Logo />
+                <Logo/>
                 <MainNavigation/>
                 {cartIsShown && <Cart onClose={hideCartHandler}/>}
                 <main className={classes.main}>{props.children}</main>

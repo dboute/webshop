@@ -23,13 +23,12 @@ const ProductItem = (props: any) => {
     return (
         <li className={classes.product}>
             <div>
-                <h3>{props.name}</h3>
-                {/*<div className={classes.description}>{props.description}</div>*/}
                 <NavLink to={`/products/${props.id}`}>
-                    <img width='200px' height='200px' src={`${firebaseUrl}${props.picture}`} alt={props.description}/>
+                    <img className={classes.image} src={`${firebaseUrl}${props.picture}`} alt={props.description}/>
                 </NavLink>
+                <h4>{props.name}</h4>
+                <div className={classes.description}>{props.description}</div>
                 <div className={classes.price}>{price}</div>
-
                 {/*<ProductItemForm onAddToCart={addToCartHandler}/>*/}
             </div>
         </li>
