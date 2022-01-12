@@ -14,6 +14,7 @@ import AboutUs from "./pages/AboutUs/AboutUs";
 import Contact from "./pages/Contact/Contact";
 import ProductDetail from "./components/Products/ProductItem/ProductDetail";
 import React from "react";
+import Cart from "./components/Cart/Cart";
 
 function App() {
     library.add(fas, far, fab);
@@ -35,9 +36,13 @@ function App() {
                 </Route>
                 <Route path='/contact' exact>
                     <Contact/>
-                </Route> <Route path='/about-us' exact>
-                <AboutUs/>
-            </Route>
+                </Route>
+                <Route path='/cart' exact>
+                    <Cart/>
+                </Route>
+                <Route path='/about-us' exact>
+                    <AboutUs/>
+                </Route>
                 <Route path='*'>
                     <NotFound/>
                 </Route>

@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from 'react';
 import CartContext from '../../store/cart-context';
 import classes from './HeaderCartButton.module.css';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faShoppingCart} from "@fortawesome/free-solid-svg-icons";
+import {faShoppingBag, faShoppingCart} from "@fortawesome/free-solid-svg-icons";
 
 const HeaderCartButton = (props) => {
   const [btnIsHighlighted, setBtnIsHighlighted] = useState(false);
@@ -35,7 +35,7 @@ const HeaderCartButton = (props) => {
   return (
     <button className={btnClasses} onClick={props.onClick}>
       <span className={classes.icon}>
-          <FontAwesomeIcon icon={faShoppingCart} />
+          <FontAwesomeIcon icon={faShoppingBag} />
       </span>
       <span className={classes.badge}>{numberOfCartItems}</span>
     </button>
