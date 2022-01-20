@@ -7,6 +7,7 @@ import {getProduct} from "../../../api/products/get-product";
 import {Col, Container, Row} from "react-bootstrap";
 import ImageGallery from 'react-image-gallery';
 import Selector from '../../UI/Selector';
+import {getProductsWithName} from "../../../api/products/get-available-products";
 
 
 const ProductDetail = () => {
@@ -31,6 +32,8 @@ const ProductDetail = () => {
         fetchProduct()
     }, [fetchProduct])
 
+    // let productsWithName = getProductsWithName(product.name);
+    // console.log(productsWithName);
     const images = [
         {
             original: `${firebaseUrl}${product.picture}`,
@@ -57,7 +60,6 @@ const ProductDetail = () => {
         <Container className={classes.products}>
             <Row>
                 <Col>
-                    {/*<img className={classes.image} src={`${firebaseUrl}${product.picture}`} alt={product.description}/>*/}
                     <ImageGallery items={images} showFullscreenButton={false} showPlayButton={false}/>
                 </Col>
                 <Col className={classes.detail}>

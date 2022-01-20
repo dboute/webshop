@@ -28,11 +28,11 @@ function App() {
                 <Route path='/home' exact>
                     <Home/>
                 </Route>
-                <Route path='/products' exact>
-                    <Products/>
-                </Route>
-                <Route path='/products/:productId'>
+                <Route path='/products/:type/:productId' exact>
                     <ProductDetail/>
+                </Route>
+                <Route path='/products/:type' exact>
+                    <Products/>
                 </Route>
                 <Route path='/contact' exact>
                     <Contact/>

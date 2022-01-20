@@ -18,6 +18,10 @@
   color: red;
 }
 
+.NoProducts {
+    text-align: center;
+}
+
 .products ul {
     flex-direction: column;
     flex-wrap: wrap;
@@ -40,4 +44,9 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.center {
+    text-align: center;
+    text-transform: capitalize;
 }

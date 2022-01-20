@@ -10,6 +10,12 @@
     float:right;
 }
 
+@media only screen and (max-width: 600px) {
+    .button {
+        visibility: hidden;
+    }
+}
+
 .icon {
     width: 1.35rem;
     height: 1.35rem;

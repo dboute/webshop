@@ -42,7 +42,7 @@ export default function SelectLabels() {
                             </Grid>
                         </Grid>
                     </MenuItem>
-                    <MenuItem value={'blauw'}>
+                    <MenuItem disabled={true} value={'blauw'}>
                         <Grid container spacing={2}>
                             <Grid item xs={2}>
                                 <Item className={classes.color} style={{'backgroundColor': 'blue'}}/>

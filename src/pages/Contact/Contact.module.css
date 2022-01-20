@@ -10,6 +10,22 @@ textarea {
     width: 50%;
     margin-top: 6px;
     padding: 20px;
+    padding-left: 200px;
+    padding-right: 200px;
+}
+
+@media only screen and (max-width: 900px) {
+    .col {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .col {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
 }
 
 .row {

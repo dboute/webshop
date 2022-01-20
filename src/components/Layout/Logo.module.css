@@ -1,8 +1,33 @@
-.image {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0rem !important;
-    max-width: 100%;
-    height: auto;
+@media only screen and (min-width: 900px) {
+    .image {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0rem !important;
+        max-width: 100%;
+        height: auto;
+        width: 400px;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .image {
+        width:0px;
+        height:0px;
+    }
+    .div {
+        width:0px;
+        height:0px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .image {
+        width:0px;
+        height:0px;
+    }
+    .div {
+        width:0px;
+        height:0px;
+    }
 }

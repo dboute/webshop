@@ -10,6 +10,12 @@
     padding-left:48px;
 }
 
+@media only screen and (max-width: 600px) {
+    .detail {
+        padding-left:0px;
+    }
+}
+
 .price {
     /*font-weight: 200;*/
     /*font-size: 16px;*/
@@ -30,11 +36,3 @@
     margin-bottom: 1rem;
     margin-top: 1rem;
 }
-
-/*.red:before {*/
-/*    color: red;*/
-/*}*/
-
-/*.blue:before {*/
-/*    color: blue;*/
-/*}*/

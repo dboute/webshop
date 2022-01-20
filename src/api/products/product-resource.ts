@@ -5,4 +5,5 @@ export interface ProductResource {
   price: number;
   picture: string;
   color: string;
+  type: string;
 }
