@@ -22,15 +22,6 @@
     background-color: transparent !important;
   }
 }
-.navbar .navbar-nav {
-  display: inline-block;
-  float: none;
-  vertical-align: top;
-}
-
-.navbar .navbar-collapse {
-  text-align: center;
-}
 
 .cart {
   visibility: hidden;
@@ -42,20 +33,32 @@
   width: 0px;
 }
 
+.center{
+  margin:auto!important;
+}
+
 @media only screen and (max-width: 600px) {
   .cart {
     visibility: visible;
   }
-
+  .container {
+    justify-content: start!important;
+  }
   .brand {
     color: #cc8f82!important;
     font-weight:bold;
     font-size:32px;
     visibility: visible;
     margin-left: 0.5em !important;
+    display: inline-block;
+    float: none;
+    vertical-align: top;
   }
   .navbar-toggle {
     float: left !important;
     margin-left: 0.5em !important;
+  }
+  .center{
+    margin:0!important;
   }
 }
