@@ -41,7 +41,7 @@ const AvailableProducts = () => {
                 setIsLoading(false);
                 setHttpError(error.message);
             });
-        }, []);
+        }, [products]);
 
         if (isLoading) {
             return (<section className={classes.ProductsLoading}>

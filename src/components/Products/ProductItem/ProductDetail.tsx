@@ -18,10 +18,13 @@ const ProductDetail = () => {
         name: 'test',
         price: 10
     });
+    const [images, setImages] = useState<Image[]>([{
+        original: `${firebaseUrl}${product.picture}`,
+        thumbnail: `${firebaseUrl}${product.picture}`,
+    }]);
     const cartCtx = useContext(CartContext);
 
     const price = `€${product.price.toFixed(2)}`;
-
 
     const fetchProduct = useCallback(async () => {
         let response = await getProduct(productId);
@@ -32,18 +35,15 @@ const ProductDetail = () => {
         fetchProduct()
     }, [fetchProduct])
 
-    // let productsWithName = getProductsWithName(product.name);
+
+    interface Image {
+        original: string;
+        thumbnail: string;
+    }
+
+    // const productsWithName = getProductsWithName(product.name);
     // console.log(productsWithName);
-    const images = [
-        {
-            original: `${firebaseUrl}${product.picture}`,
-            thumbnail: `${firebaseUrl}${product.picture}`,
-        },
-        {
-            original: 'https://firebasestorage.googleapis.com/v0/b/webshop-c8940.appspot.com/o/blauw_konijn.png?alt=media&token=37e33ceb-f10d-4632-8346-85c29ccd2c4b',
-            thumbnail: 'https://firebasestorage.googleapis.com/v0/b/webshop-c8940.appspot.com/o/blauw_konijn.png?alt=media&token=37e33ceb-f10d-4632-8346-85c29ccd2c4b',
-        },
-    ];
+    console.log(images);
 
     const addToCartHandler = (amount: any) => {
         cartCtx.addItem({
