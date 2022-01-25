@@ -15,6 +15,13 @@ export const getAvailableProducts = async (): Promise<ProductResources> => {
     };
 };
 
+// export const getProductsWithName = async (name: string): Promise<ProductResource[]> => {
+//     await axios.get<ProductResource[]>(`${webshopRef}/products.json?auth=${databaseSecret}`).then(response => {
+//         response.data.filter((product) => {
+//             return product.name === name;
+//         }).map((data) => data);
+//     })};
+
 export const getProductsWithName = async (name: string): Promise<ProductResources> => {
     const response = await axios.get<ProductResources>(`${webshopRef}/products.json?auth=${databaseSecret}`);
     return {

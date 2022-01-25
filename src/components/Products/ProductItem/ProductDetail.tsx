@@ -18,10 +18,7 @@ const ProductDetail = () => {
         name: 'test',
         price: 10
     });
-    const [images, setImages] = useState<Image[]>([{
-        original: `${firebaseUrl}${product.picture}`,
-        thumbnail: `${firebaseUrl}${product.picture}`,
-    }]);
+    const [images, setImages] = useState<any[]>([]);
     const cartCtx = useContext(CartContext);
 
     const price = `€${product.price.toFixed(2)}`;
@@ -29,7 +26,16 @@ const ProductDetail = () => {
     const fetchProduct = useCallback(async () => {
         let response = await getProduct(productId);
         setProduct(response)
-    }, [])
+        if(product !== undefined){
+            setImages([{
+            original: `${firebaseUrl}${product.picture}`,
+            thumbnail: `${firebaseUrl}${product.picture}`,
+        }])
+            // const productsWithName = await getProductsWithName(product.name);
+            // console.log(productsWithName);
+        }
+        console.log(images);
+    }, [product,images])
 
     useEffect(() => {
         fetchProduct()
@@ -41,10 +47,6 @@ const ProductDetail = () => {
         thumbnail: string;
     }
 
-    // const productsWithName = getProductsWithName(product.name);
-    // console.log(productsWithName);
-    console.log(images);
-
     const addToCartHandler = (amount: any) => {
         cartCtx.addItem({
             id: product.id,
@@ -55,6 +57,8 @@ const ProductDetail = () => {
         });
     };
 
+    const productsWithName= getProductsWithName('giraf');
+        console.log(productsWithName);
     return (
 
         <Container className={classes.products}>

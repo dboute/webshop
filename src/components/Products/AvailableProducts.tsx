@@ -43,25 +43,6 @@ const AvailableProducts = () => {
             });
         }, [products]);
 
-        if (isLoading) {
-            return (<section className={classes.ProductsLoading}>
-                <LoadingSpinner/>
-            </section>);
-        }
-
-        if (httpError) {
-            return (<section className={classes.ProductsError}>
-                <p>{httpError}</p>
-            </section>);
-        }
-
-        if (products.length === 0) {
-            return (<section className={classes.products}>
-                <p>No products available for this category.</p>
-            </section>);
-        }
-
-
         const productsList = products.map((product) => (<ProductItem
             key={product.id}
             id={product.id}
@@ -74,6 +55,18 @@ const AvailableProducts = () => {
 
         return (<section className={classes.products}>
             <h2 className={classes.center}>{type}</h2>
+            { isLoading &&
+                <section className={classes.ProductsLoading}>
+                    <LoadingSpinner/>
+                </section>}
+            { products.length === 0 &&
+                <section className={classes.NoProducts}>
+                    <p>No products available for this category.</p>
+                </section>}
+            { httpError &&
+                <section className={classes.ProductsError}>
+                    <p>{httpError}</p>
+                </section>}
             <Grid container justifyContent="center" spacing={1}>
                 {productsList.map((value) => (<Grid key={value} item>
                     {value}
