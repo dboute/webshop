@@ -7,7 +7,7 @@ import {getProduct} from "../../../api/products/get-product";
 import {Col, Container, Row} from "react-bootstrap";
 import ImageGallery from 'react-image-gallery';
 import Selector from '../../UI/Selector';
-import {getProductsWithName} from "../../../api/products/get-available-products";
+import { getAvailableProducts } from "../../../api/products/get-available-products";
 
 
 const ProductDetail = () => {
@@ -25,22 +25,40 @@ const ProductDetail = () => {
 
     const fetchProduct = useCallback(async () => {
         let response = await getProduct(productId);
-        setProduct(response)
-        if(product !== undefined){
-            setImages([{
-            original: `${firebaseUrl}${product.picture}`,
-            thumbnail: `${firebaseUrl}${product.picture}`,
-        }])
-            // const productsWithName = await getProductsWithName(product.name);
-            // console.log(productsWithName);
-        }
-        console.log(images);
-    }, [product,images])
+        setProduct(response);
+        // if(product !== undefined){
+        //     setImages([{
+        //     original: `${firebaseUrl}${product.picture}`,
+        //     thumbnail: `${firebaseUrl}${product.picture}`,
+        // }])
+        // }
+        // console.log(images);
+    }, [product])
 
     useEffect(() => {
         fetchProduct()
     }, [fetchProduct])
 
+    useEffect(() => {
+        const getProductsWithName = async () => {
+            try{
+                var productResources = await getAvailableProducts();
+                productResources = productResources.filter(function(item){
+                    return item.name === product.name;
+                }).map(function({id,name,picture,color, type, price, preview}){
+                    return {id, name, picture, color, type, price, preview};
+                });
+                // const productsWithName = productResources.filter((prod) => prod.name === product.name);
+                console.log(productResources);
+            } catch(error) {
+                console.log(error);
+            }
+        }
+
+        getProductsWithName().catch((error) => {
+            console.log(error.message);
+        });
+    }, [])
 
     interface Image {
         original: string;
@@ -57,8 +75,6 @@ const ProductDetail = () => {
         });
     };
 
-    const productsWithName= getProductsWithName('giraf');
-        console.log(productsWithName);
     return (
 
         <Container className={classes.products}>

@@ -14,7 +14,7 @@ const AvailableProducts = () => {
 
         useEffect(() => {
             const fetchProducts = async () => {
-                var responseData = (await getAvailableProducts()).productResources;
+                var responseData = (await getAvailableProducts());
                 const loadedProducts: object[] = [];
 
                 for (const key in responseData) {
@@ -33,7 +33,6 @@ const AvailableProducts = () => {
                 }
 
                 setProducts(loadedProducts);
-                console.log(products);
                 setIsLoading(false);
             };
 

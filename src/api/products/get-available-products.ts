@@ -4,27 +4,7 @@ import { webshopRef } from "./../../index"
 
 const databaseSecret = '98Ib8RC7bXCqQbPKkvhP7s4T1bvyNWa2WfOR8biW';
 
-interface ProductResources {
-    productResources: ProductResource[];
-}
-
-export const getAvailableProducts = async (): Promise<ProductResources> => {
-  const response = await axios.get(`${webshopRef}/products.json?auth=${databaseSecret}`);
-    return {
-        productResources: response.data || [],
-    };
-};
-
-// export const getProductsWithName = async (name: string): Promise<ProductResource[]> => {
-//     await axios.get<ProductResource[]>(`${webshopRef}/products.json?auth=${databaseSecret}`).then(response => {
-//         response.data.filter((product) => {
-//             return product.name === name;
-//         }).map((data) => data);
-//     })};
-
-export const getProductsWithName = async (name: string): Promise<ProductResources> => {
-    const response = await axios.get<ProductResources>(`${webshopRef}/products.json?auth=${databaseSecret}`);
-    return {
-        productResources: response.data.productResources.filter(product => product.name === name) || [],
-    };
+export const getAvailableProducts = async (): Promise<ProductResource[]> => {
+  const response = await axios.get<ProductResource[]>(`${webshopRef}/products.json?auth=${databaseSecret}`);
+    return response.data || [];
 };
