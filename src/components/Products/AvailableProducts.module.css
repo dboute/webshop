@@ -50,3 +50,20 @@
     text-align: center;
     text-transform: capitalize;
 }
+
+.link {
+    color: #cd958d;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.active {
+    color: #0000008C;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.link:hover{
+    color: #0000008C;
+    text-decoration: underline;
+}

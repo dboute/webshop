@@ -4,10 +4,11 @@ import ProductItemForm from "./ProductItemForm";
 import {useCallback, useContext, useEffect, useState} from "react";
 import CartContext from "../../../store/cart-context";
 import {getProduct} from "../../../api/products/get-product";
-import {Col, Container, Row} from "react-bootstrap";
+import {Breadcrumb, Col, Container, Row} from "react-bootstrap";
 import ImageGallery from 'react-image-gallery';
 import Selector from '../../UI/Selector';
-import { getAvailableProducts } from "../../../api/products/get-available-products";
+import {getAvailableProducts} from "../../../api/products/get-available-products";
+import {NavLink} from 'react-router-dom';
 
 
 const ProductDetail = () => {
@@ -18,56 +19,45 @@ const ProductDetail = () => {
         name: 'test',
         price: 10
     });
-    const [images, setImages] = useState<any[]>([]);
     const cartCtx = useContext(CartContext);
+
+    const similarProducts: object[] = [];
+
+    const fetchSimilarProducts = async () => {
+        var responseData = (await getAvailableProducts());
+
+        for (const key in responseData) {
+            if (responseData[key].name === product.name) {
+                similarProducts.push({
+                    id: key,
+                    original: `${firebaseUrl}${responseData[key].picture}`,
+                    thumbnail: `${firebaseUrl}${responseData[key].picture}`,
+                });
+            }
+        }
+
+    };
+
+    fetchSimilarProducts().catch((error) => {
+        console.log(error);
+    });
 
     const price = `€${product.price.toFixed(2)}`;
 
     const fetchProduct = useCallback(async () => {
         let response = await getProduct(productId);
+        console.log(response);
         setProduct(response);
-        // if(product !== undefined){
-        //     setImages([{
-        //     original: `${firebaseUrl}${product.picture}`,
-        //     thumbnail: `${firebaseUrl}${product.picture}`,
-        // }])
-        // }
-        // console.log(images);
-    }, [product])
-
-    useEffect(() => {
-        fetchProduct()
-    }, [fetchProduct])
-
-    useEffect(() => {
-        const getProductsWithName = async () => {
-            try{
-                var productResources = await getAvailableProducts();
-                productResources = productResources.filter(function(item){
-                    return item.name === product.name;
-                }).map(function({id,name,picture,color, type, price, preview}){
-                    return {id, name, picture, color, type, price, preview};
-                });
-                // const productsWithName = productResources.filter((prod) => prod.name === product.name);
-                console.log(productResources);
-            } catch(error) {
-                console.log(error);
-            }
-        }
-
-        getProductsWithName().catch((error) => {
-            console.log(error.message);
-        });
     }, [])
 
-    interface Image {
-        original: string;
-        thumbnail: string;
-    }
+    useEffect(() => {
+        fetchProduct();
+        fetchSimilarProducts();
+    }, [])
 
     const addToCartHandler = (amount: any) => {
         cartCtx.addItem({
-            id: product.id,
+            id: productId,
             name: product.name,
             amount: amount,
             price: product.price,
@@ -78,9 +68,16 @@ const ProductDetail = () => {
     return (
 
         <Container className={classes.products}>
+            <Breadcrumb>
+                <Breadcrumb.Item> <NavLink to='/home' className={classes.link}>Home</NavLink></Breadcrumb.Item>
+                <Breadcrumb.Item>
+                    <NavLink to={`/products/${product.type}`} className={classes.link}>{product.type}</NavLink>
+                </Breadcrumb.Item>
+                <Breadcrumb.Item active className={classes.active}>{product.name}</Breadcrumb.Item>
+            </Breadcrumb>
             <Row>
                 <Col>
-                    <ImageGallery items={images} showFullscreenButton={false} showPlayButton={false}/>
+                    <ImageGallery items={similarProducts} showFullscreenButton={false} showPlayButton={false}/>
                 </Col>
                 <Col className={classes.detail}>
                     <h3>{product.name}</h3>
@@ -96,3 +93,4 @@ const ProductDetail = () => {
 };
 
 export default ProductDetail;
+

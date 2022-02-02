@@ -13,6 +13,7 @@
 @media only screen and (max-width: 600px) {
     .button {
         visibility: hidden;
+        width:0px;
     }
 }
 

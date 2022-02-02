@@ -4,7 +4,7 @@ import classes from './Layout.module.css';
 import MainNavigation from './MainNavigation';
 import Cart from "../Cart/Cart";
 import CartProvider from "../../store/CartProvider";
-import Footer from "../UI/Footer";
+import Footer from "./Footer";
 import Logo from "./Logo";
 import HeaderCartButton from "./HeaderCartButton";
 import {NavLink} from 'react-router-dom';
@@ -23,9 +23,9 @@ const Layout = (props) => {
 
     return (
         <CartProvider>
-            <NavLink to='/cart'>
-                <HeaderCartButton/>
-            </NavLink>
+            {/*<NavLink to='/cart'>*/}
+            {/*    <HeaderCartButton/>*/}
+            {/*</NavLink>*/}
             <Logo/>
             <MainNavigation/>
             {cartIsShown && <Cart onClose={hideCartHandler}/>}

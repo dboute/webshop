@@ -1,6 +1,6 @@
 .link {
   display: block;
-  color: black;
+  color: #0000008C;
   text-decoration: none;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
   padding-right: 75px;
@@ -8,16 +8,16 @@
   font-size: 1.5rem;
 
   &:hover {
-    color: black;
+    color: #0000008C;
     text-decoration: none;
   }
 }
 
 .dropdownItem {
-  color: #212529 !important;
+  color: #0000008C !important;
   text-decoration: none !important;
   &:hover {
-    color: #212529 !important;
+    color: #0000008C !important;
     text-decoration: none !important;
     background-color: transparent !important;
   }
@@ -45,9 +45,9 @@
     justify-content: start!important;
   }
   .brand {
-    color: #cc8f82!important;
+    color: white!important;
     font-weight:bold;
-    font-size:32px;
+    font-size:24px!important;
     visibility: visible;
     margin-left: 0.5em !important;
     display: inline-block;
@@ -60,5 +60,21 @@
   }
   .center{
     margin:0!important;
+  }
+  .navbar{
+    background-color:#cc8e84;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+    display:inherit!important;
+  }
+
+  .dropdownItem{
+    color:white;
+  }
+  .link {
+    color:white;
   }
 }

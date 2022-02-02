@@ -5,6 +5,9 @@ import classes from './AvailableProducts.module.css';
 import LoadingSpinner from "../UI/LoadingSpinner";
 import {getAvailableProducts} from "../../api/products/get-available-products";
 import {useParams} from 'react-router-dom';
+import {Breadcrumb} from "react-bootstrap";
+import {NavLink} from 'react-router-dom';
+
 
 const AvailableProducts = () => {
         const [products, setProducts] = useState<any>([]);
@@ -40,7 +43,7 @@ const AvailableProducts = () => {
                 setIsLoading(false);
                 setHttpError(error.message);
             });
-        }, [products]);
+        }, []);
 
         const productsList = products.map((product) => (<ProductItem
             key={product.id}
@@ -52,7 +55,8 @@ const AvailableProducts = () => {
             type={product.type}
         />));
 
-        return (<section className={classes.products}>
+        return (
+            <section className={classes.products}>
             <h2 className={classes.center}>{type}</h2>
             { isLoading &&
                 <section className={classes.ProductsLoading}>
@@ -67,7 +71,7 @@ const AvailableProducts = () => {
                     <p>{httpError}</p>
                 </section>}
             <Grid container justifyContent="center" spacing={1}>
-                {productsList.map((value) => (<Grid key={value} item>
+                {productsList.map((value) => (<Grid key={value.key} item>
                     {value}
                 </Grid>))}
             </Grid>

@@ -10,15 +10,8 @@
     padding-left:48px;
 }
 
-@media only screen and (max-width: 600px) {
-    .detail {
-        padding-left:0px;
-    }
-}
 
 .price {
-    /*font-weight: 200;*/
-    /*font-size: 16px;*/
     margin-bottom: 1rem;
     margin-top: 1rem;
 }
@@ -31,8 +24,43 @@
 }
 
 .color {
-    /*font-weight: 900;*/
-    /*font-size: 16px;*/
     margin-bottom: 1rem;
     margin-top: 1rem;
+}
+
+.link {
+    color: #cd958d;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.active {
+    color: #0000008C;
+    text-decoration: none;
+    font-size: 1rem;
+    padding-top: 8px;
+}
+
+.link:hover{
+     color: #0000008C;
+     text-decoration: underline;
+}
+
+@media only screen and (max-width: 900px) {
+    .detail {
+        padding-left:20px;
+        padding-right:20px;
+    }
+    .products {
+        margin: 0em auto;
+    }
+}
+@media only screen and (max-width: 600px) {
+    .detail {
+        padding-left:20px;
+        padding-right:20px;
+    }
+    .products {
+        margin: 0em auto;
+    }
 }

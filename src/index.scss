@@ -58,7 +58,7 @@ body {
 }
 
 a#basic-nav-dropdown{
-  color: #000000!important;
+  color: #0000008C!important;
   text-decoration: none!important;
   background-color: transparent!important;
   font-size: 1.5rem;
@@ -67,7 +67,14 @@ a#basic-nav-dropdown{
   padding-bottom: 0px;
 }
 
+@media only screen and (max-width: 900px) {
+  a#basic-nav-dropdown{
+    color: white!important;
+  }
+}
+
 .dropdown-item.active, .dropdown-item:active {
   text-decoration: none;
   background-color: transparent!important;
 }
+.breadcrumb-item+.breadcrumb-item::before{content:var(--bs-breadcrumb-divider,">") !important ;}
