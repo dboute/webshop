@@ -19,28 +19,24 @@ const ProductDetail = () => {
         name: 'test',
         price: 10
     });
+    const [similarProducts, setSimilarProducts] = useState<any[]>([]);
     const cartCtx = useContext(CartContext);
 
-    const similarProducts: object[] = [];
+    // const similarProducts: object[] = [];
 
-    const fetchSimilarProducts = async () => {
+    const fetchSimilarProducts = useCallback(async() => {
         var responseData = (await getAvailableProducts());
 
         for (const key in responseData) {
             if (responseData[key].name === product.name) {
-                similarProducts.push({
+                setSimilarProducts(similarProducts => [...similarProducts, {
                     id: key,
                     original: `${firebaseUrl}${responseData[key].picture}`,
                     thumbnail: `${firebaseUrl}${responseData[key].picture}`,
-                });
+                }]);
             }
         }
-
-    };
-
-    fetchSimilarProducts().catch((error) => {
-        console.log(error);
-    });
+    }, [product.name]);
 
     const price = `€${product.price.toFixed(2)}`;
 
@@ -48,12 +44,12 @@ const ProductDetail = () => {
         let response = await getProduct(productId);
         console.log(response);
         setProduct(response);
-    }, [])
+    }, [productId])
 
     useEffect(() => {
         fetchProduct();
         fetchSimilarProducts();
-    }, [])
+    }, [fetchProduct,fetchSimilarProducts])
 
     const addToCartHandler = (amount: any) => {
         cartCtx.addItem({

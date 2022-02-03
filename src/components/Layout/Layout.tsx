@@ -6,16 +6,14 @@ import Cart from "../Cart/Cart";
 import CartProvider from "../../store/CartProvider";
 import Footer from "./Footer";
 import Logo from "./Logo";
-import HeaderCartButton from "./HeaderCartButton";
-import {NavLink} from 'react-router-dom';
 
 
 const Layout = (props) => {
     const [cartIsShown, setCartIsShown] = useState(false);
 
-    const showCartHandler = () => {
-        setCartIsShown(true);
-    };
+    // const showCartHandler = () => {
+    //     setCartIsShown(true);
+    // };
 
     const hideCartHandler = () => {
         setCartIsShown(false);

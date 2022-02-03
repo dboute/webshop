@@ -5,8 +5,6 @@ import classes from './AvailableProducts.module.css';
 import LoadingSpinner from "../UI/LoadingSpinner";
 import {getAvailableProducts} from "../../api/products/get-available-products";
 import {useParams} from 'react-router-dom';
-import {Breadcrumb} from "react-bootstrap";
-import {NavLink} from 'react-router-dom';
 
 
 const AvailableProducts = () => {
@@ -43,7 +41,7 @@ const AvailableProducts = () => {
                 setIsLoading(false);
                 setHttpError(error.message);
             });
-        }, []);
+        }, [type]);
 
         const productsList = products.map((product) => (<ProductItem
             key={product.id}

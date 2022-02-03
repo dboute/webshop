@@ -3,8 +3,7 @@ import {BrowserRouter} from 'react-router-dom';
 import App from './App';
 import React from "react";
 import MessengerCustomerChat from 'react-messenger-customer-chat';
-import { initializeApp } from 'firebase/app' // no compat for new SDK
-import { getDatabase, ref } from 'firebase/database'
+import { initializeApp } from 'firebase/app'
 
 const firebaseConfig = {
     apiKey: "AIzaSyBNv9rPCZm55i6x_km2unzlDqjlUWvjP30",
@@ -17,11 +16,7 @@ const firebaseConfig = {
     measurementId: "G-242163LZ7S"
 };
 
-const app = initializeApp(firebaseConfig)
-
-const database = getDatabase(app)
-
-// export const webshopRef = ref(database, "webshop")
+initializeApp(firebaseConfig)
 
 export const webshopRef = firebaseConfig.databaseURL
 

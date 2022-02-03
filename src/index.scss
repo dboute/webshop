@@ -78,3 +78,8 @@ a#basic-nav-dropdown{
   background-color: transparent!important;
 }
 .breadcrumb-item+.breadcrumb-item::before{content:var(--bs-breadcrumb-divider,">") !important ;}
+
+.quantity-display {
+  padding: 0rem!important;
+  width:60%!important;
+}

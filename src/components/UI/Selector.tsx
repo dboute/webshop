@@ -23,11 +23,12 @@ export default function SelectLabels() {
 
     return (
         <div>
-            <FormControl sx={{m: 1, minWidth: 120}}>
-                <InputLabel id="demo-simple-select-helper-label">Kleur</InputLabel>
+            <FormControl sx={{m: 1, minWidth: 240}}>
+                <InputLabel id="color-select-label">Kleur</InputLabel>
                 <Select
-                    labelId="demo-simple-select-helper-label"
-                    id="demo-simple-select-helper"
+                    className={classes.select}
+                    labelId="color-select-label"
+                    id="color-select"
                     value={color}
                     label="Kleuren"
                     onChange={handleChange}

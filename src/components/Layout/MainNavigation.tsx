@@ -2,7 +2,6 @@ import {NavLink} from 'react-router-dom';
 import classes from './MainNavigation.module.scss';
 import {Container, Nav, Navbar, NavDropdown} from 'react-bootstrap';
 import SmallLogo from './SmallLogo';
-import HeaderCartButton from "./HeaderCartButton";
 import React from "react";
 
 const MainNavigation = () => {
