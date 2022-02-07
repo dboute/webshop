@@ -65,11 +65,12 @@ const ProductDetail = () => {
 
         <Container className={classes.products}>
             <Breadcrumb>
-                <Breadcrumb.Item> <NavLink to='/home' className={classes.link}>Home</NavLink></Breadcrumb.Item>
+                <Breadcrumb.Item>
+                    <NavLink to='/products' className={classes.link}>alle producten</NavLink>
+                </Breadcrumb.Item>
                 <Breadcrumb.Item>
                     <NavLink to={`/products/${product.type}`} className={classes.link}>{product.type}</NavLink>
                 </Breadcrumb.Item>
-                <Breadcrumb.Item active className={classes.active}>{product.name}</Breadcrumb.Item>
             </Breadcrumb>
             <Row>
                 <Col>

@@ -16,15 +16,19 @@ textarea {
 
 @media only screen and (max-width: 900px) {
     .col {
-        padding-left: 0px;
-        padding-right: 0px;
+        padding-left: 40px;
+        padding-right: 40px;
     }
 }
 
 @media only screen and (max-width: 600px) {
     .col {
-        padding-left: 0px;
-        padding-right: 0px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .column, input[type=submit] {
+        width: 100%;
+        margin-top: 0;
     }
 }
 
@@ -42,12 +46,4 @@ textarea {
     content: "";
     display: table;
     clear: both;
-}
-
-/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
-    .column, input[type=submit] {
-        width: 100%;
-        margin-top: 0;
-    }
 }

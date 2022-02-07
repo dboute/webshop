@@ -71,6 +71,10 @@ a#basic-nav-dropdown{
   a#basic-nav-dropdown{
     color: white!important;
   }
+  div.image-gallery-thumbnails-wrapper{
+    visibility: hidden;
+    height: 0px;
+  }
 }
 
 .dropdown-item.active, .dropdown-item:active {
@@ -82,4 +86,8 @@ a#basic-nav-dropdown{
 .quantity-display {
   padding: 0rem!important;
   width:60%!important;
+}
+
+li.breadcrumb-item{
+  text-transform: capitalize;
 }

@@ -1,5 +1,5 @@
 .products {
-    width: 90%;
+    /*width: 90%;*/
     margin: 2rem auto;
     animation: products-appear 1s ease-out forwards;
     font-size: 1.5rem;
@@ -8,6 +8,7 @@
 .detail {
     padding-top:48px;
     padding-left:48px;
+    text-align: center;
 }
 
 
@@ -50,6 +51,7 @@
     .detail {
         padding-left:20px;
         padding-right:20px;
+        padding-top: 0px;
     }
     .products {
         margin: 0em auto;
@@ -59,6 +61,7 @@
     .detail {
         padding-left:20px;
         padding-right:20px;
+        padding-top: 0px;
     }
     .products {
         margin: 0em auto;

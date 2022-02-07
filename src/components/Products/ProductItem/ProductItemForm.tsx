@@ -13,13 +13,15 @@ const ProductItemForm = (props: any) => {
     props.onAddToCart(amount);
   };
 
+    const getPickerValue = (value) =>{
+        setAmount(value);
+        console.log(value) // Here you can get the value of the Quantity picker
+    }
+
   return (
     <form className={classes.form} onSubmit={submitHandler}>
-        <QuantityPicker min={0} max={5} onChange={()=>{ // here value is the final update value of the component
-            setAmount(+amount);
-        }}/>
-
-      <Button text='Bestel nu!' />
+        <QuantityPicker min={0} max={5} onChange={(getPickerValue)}/>
+      <Button text='Bestel nu!' type='submit' />
     </form>
   );
 };

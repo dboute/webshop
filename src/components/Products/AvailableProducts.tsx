@@ -5,6 +5,8 @@ import classes from './AvailableProducts.module.css';
 import LoadingSpinner from "../UI/LoadingSpinner";
 import {getAvailableProducts} from "../../api/products/get-available-products";
 import {useParams} from 'react-router-dom';
+import {Breadcrumb} from "react-bootstrap";
+import {NavLink} from 'react-router-dom';
 
 
 const AvailableProducts = () => {
@@ -55,6 +57,11 @@ const AvailableProducts = () => {
 
         return (
             <section className={classes.products}>
+                <Breadcrumb>
+                    <Breadcrumb.Item>
+                        <NavLink to='/products' className={classes.link}>alle producten</NavLink>
+                    </Breadcrumb.Item>
+                </Breadcrumb>
             <h2 className={classes.center}>{type}</h2>
             { isLoading &&
                 <section className={classes.ProductsLoading}>
