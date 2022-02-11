@@ -1,3 +1,7 @@
 .form {
-    text-align: left;
+    text-align: center;
+}
+.buttons {
+    display: flex;
+    alignItems: 'center';
 }

@@ -1,19 +1,18 @@
-import { useReducer } from 'react';
+import {useEffect, useReducer} from 'react';
 
 import CartContext from './cart-context';
 
 const defaultCartState = {
-  items: [],
+  items: JSON.parse(localStorage.getItem("cart") || "[]"),
   totalAmount: 0,
 };
-
 const cartReducer = (state, action) => {
   if (action.type === 'ADD') {
     const updatedTotalAmount =
       state.totalAmount + action.item.price * action.item.amount;
 
     const existingCartItemIndex = state.items.findIndex(
-      (item) => item.id === action.item.id
+      (item) => item.id === action.item.id && item.color === action.item.color
     );
     const existingCartItem = state.items[existingCartItemIndex];
     let updatedItems;
@@ -29,7 +28,8 @@ const cartReducer = (state, action) => {
       updatedItems = state.items.concat(action.item);
     }
 
-    return {
+      localStorage.setItem('cart', JSON.stringify(updatedItems));
+      return {
       items: updatedItems,
       totalAmount: updatedTotalAmount,
     };

@@ -1,10 +1,10 @@
 import { useState } from 'react';
 
-import { QuantityPicker } from 'react-qty-picker';
 import classes from './ProductItemForm.module.css';
 import Button from "../../UI/Button";
+import {QuantityPicker} from "../../UI/QuantityPicker";
 
-const ProductItemForm = (props: any) => {
+const ProductItemForm = (props: any, onUpdateCartQty, onRemoveFromCart ) => {
   const [amount, setAmount] = useState<number>(0);
 
   const submitHandler = (event: any) => {
@@ -19,10 +19,10 @@ const ProductItemForm = (props: any) => {
     }
 
   return (
-    <form className={classes.form} onSubmit={submitHandler}>
-        <QuantityPicker min={0} max={5} onChange={(getPickerValue)}/>
-      <Button text='Bestel nu!' type='submit' />
-    </form>
+      <form className={classes.form} onSubmit={submitHandler}>
+          <QuantityPicker min={0} max={5} onChange={(getPickerValue)}/>
+          <Button text='Bestel nu!' type='submit' />
+      </form>
   );
 };
 

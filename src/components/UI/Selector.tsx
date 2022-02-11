@@ -14,22 +14,20 @@ const Item = styled(Paper)(({theme}) => ({
     textAlign: 'center',
     color: theme.palette.text.secondary,
 }));
-export default function SelectLabels() {
-    const [color, setColor] = React.useState('');
-
+export default function SelectLabels(props) {
     const handleChange = (event) => {
-        setColor(event.target.value);
+        props.parentCallback(event.target.value);
     };
 
     return (
         <div>
-            <FormControl sx={{m: 1, minWidth: 240}}>
+            <FormControl className='formControl' fullWidth sx={{margin: 0, minWidth: 240}}>
                 <InputLabel id="color-select-label">Kleur</InputLabel>
                 <Select
                     className={classes.select}
                     labelId="color-select-label"
                     id="color-select"
-                    value={color}
+                    // value={color}
                     label="Kleuren"
                     onChange={handleChange}
                 >

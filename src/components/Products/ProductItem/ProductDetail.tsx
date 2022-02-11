@@ -6,7 +6,7 @@ import CartContext from "../../../store/cart-context";
 import {getProduct} from "../../../api/products/get-product";
 import {Breadcrumb, Col, Container, Row} from "react-bootstrap";
 import ImageGallery from 'react-image-gallery';
-import Selector from '../../UI/Selector';
+import Selector  from '../../UI/Selector';
 import {getAvailableProducts} from "../../../api/products/get-available-products";
 import {NavLink} from 'react-router-dom';
 
@@ -21,8 +21,7 @@ const ProductDetail = () => {
     });
     const [similarProducts, setSimilarProducts] = useState<any[]>([]);
     const cartCtx = useContext(CartContext);
-
-    // const similarProducts: object[] = [];
+    const [selectedColor, setSelectedColor] = useState('');
 
     const fetchSimilarProducts = useCallback(async() => {
         var responseData = (await getAvailableProducts());
@@ -51,13 +50,18 @@ const ProductDetail = () => {
         fetchSimilarProducts();
     }, [fetchProduct,fetchSimilarProducts])
 
+    const handleCallback = (childData) =>{
+        setSelectedColor( childData)
+    }
+
     const addToCartHandler = (amount: any) => {
         cartCtx.addItem({
             id: productId,
             name: product.name,
             amount: amount,
             price: product.price,
-            color: product.color
+            color: selectedColor,
+            picture: product.picture
         });
     };
 
@@ -81,7 +85,7 @@ const ProductDetail = () => {
                     <div className={classes.description}>{product.description}</div>
                     <div className={classes.price}>{price}</div>
                     <div className={classes.color}>
-                        <Selector/>
+                        <Selector parentCallback = {handleCallback}/>
                     </div>
                     <ProductItemForm onAddToCart={addToCartHandler}/></Col>
             </Row>

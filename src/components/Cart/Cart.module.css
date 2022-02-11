@@ -7,42 +7,17 @@
 }
 
 .total {
+  color:#cc8e84;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-weight: bold;
+  font-weight: 700;
   font-size: 1.5rem;
   margin: 1rem 0;
 }
 
 .actions {
   text-align: right;
-}
-
-.actions button {
-  font: inherit;
-  cursor: pointer;
-  background-color: transparent;
-  border: 1px solid #000000;
-  padding: 0.5rem 2rem;
-  border-radius: 25px;
-  margin-left: 1rem;
-}
-
-.actions button:hover,
-.actions button:active {
-  background-color: #000000;
-  border-color: #000000;
-  color: white;
-}
-
-.actions .button--alt {
-  color: #000000;
-}
-
-.actions .button {
-  background-color: #000000;
-  color: white;
 }
 
 .title {

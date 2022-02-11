@@ -6,6 +6,7 @@ import Checkout from './Checkout';
 import {faShoppingBag} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {Box} from "@mui/material";
+import Button from "../UI/Button";
 
 const Cart = (props) => {
     const [isCheckout, setIsCheckout] = useState(false);
@@ -51,6 +52,7 @@ const Cart = (props) => {
                     amount={item.amount}
                     price={item.price}
                     color={item.color}
+                    picture={item.picture}
                     onRemove={cartItemRemoveHandler.bind(null, item.id)}
                     onAdd={cartItemAddHandler.bind(null, item)}
                 />
@@ -61,9 +63,7 @@ const Cart = (props) => {
     const modalActions = (
         <div className={classes.actions}>
             {hasItems && (
-                <button className={classes.button} onClick={orderHandler}>
-                    Order
-                </button>
+                <Button text='Bestel nu!' onClick={orderHandler} />
             )}
         </div>
     );

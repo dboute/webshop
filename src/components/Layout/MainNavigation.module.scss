@@ -1,6 +1,6 @@
 .link {
   display: block;
-  color: #0000008C;
+  color:  #000000;
   text-decoration: none;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
   padding-right: 75px;
@@ -8,16 +8,16 @@
   font-size: 1.5rem;
 
   &:hover {
-    color: #0000008C;
+    color:  #000000;
     text-decoration: none;
   }
 }
 
 .dropdownItem {
-  color: #0000008C !important;
+  color:  #000000 !important;
   text-decoration: none !important;
   &:hover {
-    color: #0000008C !important;
+    color:  #000000 !important;
     text-decoration: none !important;
     background-color: transparent !important;
   }

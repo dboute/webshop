@@ -30,7 +30,7 @@
 
 .actions button {
   font: inherit;
-  color: #000000;
+  color:   #000000;
   cursor: pointer;
   background-color: transparent;
   border: none;
@@ -44,21 +44,21 @@
 }
 
 .actions .submit {
-  border: 1px solid #000000;
-  background-color: #000000;
+  border: 1px solid   #000000;
+  background-color:   #000000;
   color: white;
 }
 
 .actions .submit:hover,
 .actions .submit:active {
-  background-color: #000000;
+  background-color:   #000000;
 }
 
 .invalid label {
-  color: #000000;
+  color:   #000000;
 }
 
 .invalid input {
-  border-color: #000000;
+  border-color:   #000000;
   background-color: #ffeff1;
 }
