@@ -1,6 +1,8 @@
 import classes from './CartItem.module.css';
 import {QuantityPicker} from "../UI/QuantityPicker";
-import {Col, Container, Row} from "react-bootstrap";
+import {Button, Col, Container, Row} from "react-bootstrap";
+import {faTrash} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 const CartItem = (props) => {
     const firebaseUrl = 'https://firebasestorage.googleapis.com/v0/b/webshop-c8940.appspot.com/o/';
@@ -20,11 +22,15 @@ const CartItem = (props) => {
                 </Col>
             </Row>
             <Row>
-                <Col className={classes.price} xs={4}>{price}</Col>
+                <Col className={classes.price} xs={4}>{price}
+                </Col>
             </Row>
             <Row className={classes.row}>
                 <Col xs={6}> <QuantityPicker min={0} max={5} value={props.amount}/></Col>
-                <Col className={classes.totalItemPrice}>{totalItemPrice}</Col>
+                <Col className={classes.totalItemPrice}>{totalItemPrice}
+                    <Button className={classes.button} onClick={props.onRemoveAll}>
+                        <FontAwesomeIcon icon={faTrash} />
+                    </Button></Col>
             </Row>
         </Container>
     );
