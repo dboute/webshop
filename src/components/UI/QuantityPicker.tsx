@@ -4,6 +4,18 @@ export const  QuantityPicker = props => {
 
 const [value, setValue] = useState(props.value?props.value:0)
 
+    const onRemove = () => {
+    if(props.onRemove){
+        props.onRemove();
+        }
+    }
+
+    const onAdd = () => {
+        if(props.onAdd){
+            props.onAdd();
+        }
+    }
+
 const handleChange = (nm) => (event)=>{
   const plusValue  = Number(value) + 1;
   const minusValue = Number(value) - 1;
@@ -11,10 +23,12 @@ const handleChange = (nm) => (event)=>{
   switch(nm){
       case 'increment':{
           if(props.max === undefined){
+              onAdd();
               setValue(plusValue);
               props.onChange && props.onChange(plusValue);
           }
           else if(plusValue <= Number(props.max)){
+              onAdd();
               setValue(plusValue);
               props.onChange && props.onChange(plusValue)
           }        
@@ -22,10 +36,12 @@ const handleChange = (nm) => (event)=>{
       }
       case 'decrement':{
         if(props.min === undefined){
+          onRemove();
           setValue(minusValue);
           props.onChange && props.onChange(minusValue)
         }
         else if(minusValue >= Number(props.min)){
+            onRemove();
             setValue(minusValue);
             props.onChange && props.onChange(minusValue)
           }
@@ -58,16 +74,15 @@ useEffect(() => {
 }, []);
 
     return (
-      props.smooth ? 
-      <div style={{width:props.width?props.width:'10rem'}} data-quantity="">
-        <button onClick={handleChange('decrement')} type="button" 
-                title="Down" className="sub">Down</button>
-        <input  style={{width:props.width?props.width:'10rem'}}  
-                value={value} type="number" name="quantity" pattern="[0-9]+"  
-                onChange={handleChange('input')}/>
-        <button type="button" title="Up" 
-                className="add" onClick={handleChange('increment')}>Up</button>
-      </div>
+      props.onAdd ?
+      <span className="quantity-picker">
+        <button className={`${props.disableDec ? 'mod-disable ' : ''}quantity-modifier modifier-left`}
+                onClick={handleChange('decrement')}>&ndash;</button>
+        <input style={{width:props.width?props.width:'4rem'}} className="quantity-display" type="text"
+               value={value} onChange={handleChange('input')} />
+        <button className={`${props.disableInc ? 'mod-disable ' : ''}quantity-modifier modifier-right`}
+                onClick={handleChange('increment')}>&#xff0b;</button>
+      </span>
        :
        <span className="quantity-picker">
         <button className={`${props.disableDec ? 'mod-disable ' : ''}quantity-modifier modifier-left`} 

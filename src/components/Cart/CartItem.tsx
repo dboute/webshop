@@ -26,7 +26,7 @@ const CartItem = (props) => {
                 </Col>
             </Row>
             <Row className={classes.row}>
-                <Col xs={6}> <QuantityPicker min={0} max={5} value={props.amount}/></Col>
+                <Col xs={6}> <QuantityPicker onRemove={props.onRemove} onAdd={props.onAdd} min={0} max={5} value={props.amount}/></Col>
                 <Col className={classes.totalItemPrice}>{totalItemPrice}
                     <Button className={classes.button} onClick={props.onRemoveAll}>
                         <FontAwesomeIcon icon={faTrash} />
