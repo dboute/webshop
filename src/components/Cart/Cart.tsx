@@ -2,17 +2,17 @@ import React, {useContext, useState} from 'react';
 import CartItem from './CartItem';
 import classes from './Cart.module.css';
 import CartContext from '../../store/cart-context';
-import Checkout from './Checkout';
 import {faShoppingBag} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {Box} from "@mui/material";
 import Button from "../UI/Button";
+import { useHistory } from 'react-router-dom';
 
 const Cart = (props) => {
-    const [isCheckout, setIsCheckout] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [didSubmit, setDidSubmit] = useState(false);
     const cartCtx = useContext<any>(CartContext);
+    const history = useHistory();
 
     const totalAmount = `€${cartCtx.totalAmount.toFixed(2)}`;
     const hasItems = cartCtx.items.length > 0;
@@ -30,7 +30,8 @@ const Cart = (props) => {
     };
 
     const orderHandler = () => {
-        setIsCheckout(true);
+        console.log("test");
+        history.push('/checkout');
     };
 
     const submitOrderHandler = async (userData) => {
@@ -80,10 +81,7 @@ const Cart = (props) => {
                 <span>Total Amount</span>
                 <span>{totalAmount}</span>
             </div>
-            {isCheckout && (
-                <Checkout onConfirm={submitOrderHandler} onCancel={props.onClose}/>
-            )}
-            {!isCheckout && modalActions}
+            {modalActions}
         </React.Fragment>
     );
 
@@ -99,7 +97,7 @@ const Cart = (props) => {
     );
 
     return (<>
-            <Box className={classes.title}><h2><FontAwesomeIcon icon={faShoppingBag}/> My cart</h2></Box>
+            <Box className={classes.title}><h2><FontAwesomeIcon icon={faShoppingBag}/>Winkelmandje</h2></Box>
             <Box>
                 {!isSubmitting && !didSubmit && cartModalContent}
                 {isSubmitting && isSubmittingModalContent}
