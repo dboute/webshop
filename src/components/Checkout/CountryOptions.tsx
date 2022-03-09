@@ -1,5 +1,4 @@
 import React from 'react';
-import { Input } from "reactstrap";
 import {InputLabel, Select} from "@mui/material";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";

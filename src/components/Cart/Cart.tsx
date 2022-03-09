@@ -48,8 +48,16 @@ const Cart = (props) => {
         cartCtx.clearCart();
     };
 
-    const cartItems = (
-        <ul className={classes['cart-items']}>
+    const modalActions = (
+        <div className={classes.actions}>
+            {hasItems && (
+                <Button text='Bestel nu!' onClick={orderHandler} />
+            )}
+        </div>
+    );
+
+    const cartModalContent = (
+        <React.Fragment>
             {cartCtx.items.map((item) => (
                 <CartItem
                     key={item.id}
@@ -63,20 +71,6 @@ const Cart = (props) => {
                     onAdd={cartItemAddHandler.bind(null, item)}
                 />
             ))}
-        </ul>
-    );
-
-    const modalActions = (
-        <div className={classes.actions}>
-            {hasItems && (
-                <Button text='Bestel nu!' onClick={orderHandler} />
-            )}
-        </div>
-    );
-
-    const cartModalContent = (
-        <React.Fragment>
-            {cartItems}
             <div className={classes.total}>
                 <span>Total Amount</span>
                 <span>{totalAmount}</span>

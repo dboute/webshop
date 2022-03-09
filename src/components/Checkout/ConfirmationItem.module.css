@@ -17,6 +17,11 @@
     font-size: 1.3rem;
 }
 
+.itemQuantity {
+    color: black;
+    font-size: 1rem;
+}
+
 .totalItemPrice {
     color: #cc8e84;
     text-transform: capitalize;

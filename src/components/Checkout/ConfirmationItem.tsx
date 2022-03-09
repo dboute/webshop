@@ -4,7 +4,6 @@ import { Col, Container, Row} from "react-bootstrap";
 const ConfirmationItem = (props) => {
     const firebaseUrl = 'https://firebasestorage.googleapis.com/v0/b/webshop-c8940.appspot.com/o/';
 
-    const price = `€${props.price.toFixed(2)}`;
 
     return (
         <Container>
@@ -15,7 +14,7 @@ const ConfirmationItem = (props) => {
                 <Col xs={6} className={classes.itemTitle}>
                     {props.name} - {props.color}
                     <Row>
-                        <Col xs={6} className={classes.itemTitle}>
+                        <Col xs={12} className={classes.itemQuantity}>
                         {`quantity: ${props.amount}`}
                         </Col>
                     </Row>
