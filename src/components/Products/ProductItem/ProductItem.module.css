@@ -22,15 +22,7 @@
     overflow: hidden;
 }
 
-@media only screen and (max-width: 900px) {
-    .image {
-        max-height: calc(100vh - 80px);
-        width: 100%;
-        object-fit: contain;
-    }
-}
-
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 990px) {
     .image {
         max-height: calc(100vh - 80px);
         width: 100%;

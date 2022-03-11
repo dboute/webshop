@@ -78,7 +78,7 @@ const ProductDetail = () => {
             </Breadcrumb>
             <Row>
                 <Col>
-                    <ImageGallery items={similarProducts} showFullscreenButton={false} showPlayButton={false}/>
+                    <ImageGallery items={similarProducts} showFullscreenButton={false} showPlayButton={false} showThumbnails={similarProducts.length > 1} show/>
                 </Col>
                 <Col className={classes.detail}>
                     <h3>{product.name}</h3>

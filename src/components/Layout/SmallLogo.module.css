@@ -1,23 +1,13 @@
-@media only screen and (min-width: 900px) {
-    .image {
-        width:0px;
-    }
+.image {
+    width: 0px;
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 992px) {
     .image {
-        width:30px;
-        height:30px;
+        width: 30px;
+        height: 30px;
         vertical-align: top !important;
         display: inline-block !important;
     }
 }
 
-@media only screen and (max-width: 600px) {
-    .image {
-        width:30px;
-        height:30px;
-        vertical-align: top !important;
-        display: inline-block !important;
-    }
-}

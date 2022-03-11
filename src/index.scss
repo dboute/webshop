@@ -67,13 +67,18 @@ a#basic-nav-dropdown{
   padding-bottom: 0px;
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 992px) {
   a#basic-nav-dropdown{
     color: white!important;
   }
   div.image-gallery-thumbnails-wrapper{
     visibility: hidden;
     height: 0px;
+  }
+}
+@media only screen and (max-width: 790px) {
+  .image-gallery-content .image-gallery-slide .image-gallery-image {
+    width: calc(100vw - 80px);
   }
 }
 
