@@ -12,9 +12,12 @@ const ConfirmationItem = (props) => {
                     <img className={classes.image} src={`${firebaseUrl}${props.picture}`} alt={props.description}/>
                 </Col>
                 <Col xs={6} className={classes.itemTitle}>
-                    {props.name} - {props.color}
+                    {props.name}
                     <Row>
-                        <Col xs={12} className={classes.itemQuantity}>
+                        <Col xs={12} className={classes.item}>
+                            {`Color: ${props.color}`}
+                        </Col>
+                        <Col xs={12} className={classes.item}>
                         {`quantity: ${props.amount}`}
                         </Col>
                     </Row>

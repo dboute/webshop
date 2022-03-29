@@ -14,12 +14,12 @@
 .itemTitle {
     color: #cc8e84;
     text-transform: capitalize;
-    font-size: 1.3rem;
+    font-size: 2.6rem;
 }
 
-.itemQuantity {
+.item{
     color: black;
-    font-size: 1rem;
+    font-size: 1.5rem;
 }
 
 .totalItemPrice {
@@ -38,7 +38,7 @@
 
 .image {
     position: relative;
-    width: 100%;
+    width: 50%;
     max-height: calc(100vh / 3);
     overflow: hidden;
 }
@@ -57,18 +57,19 @@
     box-shadow:none !important;
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 990px) {
     .image {
         max-height: calc(100vh - 80px);
         width: 90%;
         object-fit: contain;
     }
-}
-
-@media only screen and (max-width: 600px) {
-    .image {
-        max-height: calc(100vh - 80px);
-        width: 80%;
-        object-fit: contain;
+    .itemTitle {
+        color: #cc8e84;
+        text-transform: capitalize;
+        font-size: 1.3rem;
+    }
+    .item {
+        color: black;
+        font-size: 1rem;
     }
 }

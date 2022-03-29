@@ -3,9 +3,6 @@ import classes from './MainNavigation.module.scss';
 import {Container, Nav, Navbar, NavDropdown} from 'react-bootstrap';
 import SmallLogo from './SmallLogo';
 import React from "react";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faShoppingBag, faShoppingCart} from "@fortawesome/free-solid-svg-icons";
-import HeaderCartButton from "./HeaderCartButton";
 
 const MainNavigation = () => {
 

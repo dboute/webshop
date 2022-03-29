@@ -14,7 +14,7 @@ textarea {
     padding-right: 200px;
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 990px) {
     .col {
         padding-left: 40px;
         padding-right: 40px;

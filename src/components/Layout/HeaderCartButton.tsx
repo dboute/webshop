@@ -1,9 +1,9 @@
-import { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import CartContext from '../../store/cart-context';
 import classes from './HeaderCartButton.module.css';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faShoppingBag, faShoppingCart} from "@fortawesome/free-solid-svg-icons";
+import {faShoppingBag} from "@fortawesome/free-solid-svg-icons";
 
 const HeaderCartButton = (props) => {
   const [btnIsHighlighted, setBtnIsHighlighted] = useState(false);

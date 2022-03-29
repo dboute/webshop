@@ -1,4 +1,4 @@
-import React, {FunctionComponent} from 'react';
+import React, {FunctionComponent, useContext, useState} from 'react';
 import {Box, Grid, TextField} from '@mui/material';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faAddressCard, faCreditCard, faHome} from "@fortawesome/free-solid-svg-icons";
@@ -8,31 +8,29 @@ import "react-step-progress/dist/index.css";
 import StepProgressBar from "react-step-progress";
 import {useForm} from "react-hook-form";
 import CountryOptions from "./CountryOptions";
-
-// interface CheckoutForm {
-//     firstName;
-//     lastName;
-//     country;
-// }
+import CartContext from "../../store/cart-context";
 
 export const Checkout: FunctionComponent = () => {
-    const orderHandler = () => {
-        console.log("test");
+    const cartCtx = useContext(CartContext);
+
+    const submitOrderHandler = async (userData) => {
+        await fetch('https://webshop-c8940-default-rtdb.europe-west1.firebasedatabase.app/orders.json', {
+            method: 'POST',
+            body: JSON.stringify({
+                user: userData,
+                orderedItems: cartCtx.items,
+            }),
+        });
         history.push('/confirmation');
     };
 
     const {
         handleSubmit,
-        control,
     } = useForm({});
 
     const onSubmit = async (country) => {
         console.log(country);
     };
-
-    const options = [
-        {value: 'BE', label: 'België'},
-    ];
 
     const history = useHistory();
     const step1Content =
@@ -109,7 +107,7 @@ export const Checkout: FunctionComponent = () => {
                         content: step3Content,
                     },
                 ]}
-                onSubmit={() => orderHandler()}/>
+                onSubmit={(userdata) => submitOrderHandler(userdata)}/>
 
         </form>
     );

@@ -8,7 +8,7 @@ import {Box} from "@mui/material";
 import Button from "../UI/Button";
 import { useHistory } from 'react-router-dom';
 
-const Cart = (props) => {
+const Cart = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [didSubmit, setDidSubmit] = useState(false);
     const cartCtx = useContext<any>(CartContext);
@@ -32,20 +32,6 @@ const Cart = (props) => {
     const orderHandler = () => {
         console.log("test");
         history.push('/checkout');
-    };
-
-    const submitOrderHandler = async (userData) => {
-        setIsSubmitting(true);
-        await fetch('https://react-http-12952-default-rtdb.firebaseio.com/orders.json', {
-            method: 'POST',
-            body: JSON.stringify({
-                user: userData,
-                orderedItems: cartCtx.items,
-            }),
-        });
-        setIsSubmitting(false);
-        setDidSubmit(true);
-        cartCtx.clearCart();
     };
 
     const modalActions = (
