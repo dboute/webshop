@@ -80,7 +80,12 @@ a#basic-nav-dropdown{
     padding-bottom:0px;
   }
 }
-@media only screen and (max-width: 790px) {
+@media only screen and (min-width: 525px) {
+  .image-gallery-content .image-gallery-slide .image-gallery-image {
+    width: calc(100vw*0.3);
+  }
+}
+@media only screen and (max-width: 525px) {
   .image-gallery-content .image-gallery-slide .image-gallery-image {
     width: calc(100vw - 80px);
   }

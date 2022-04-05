@@ -9,20 +9,18 @@ import Button from "../UI/Button";
 import { useHistory } from 'react-router-dom';
 
 const Cart = () => {
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [didSubmit, setDidSubmit] = useState(false);
     const cartCtx = useContext<any>(CartContext);
     const history = useHistory();
 
     const totalAmount = `€${cartCtx.totalAmount.toFixed(2)}`;
     const hasItems = cartCtx.items.length > 0;
 
-    const cartItemRemoveHandler = (id) => {
-        cartCtx.removeItem(id, false);
+    const cartItemRemoveHandler = (item) => {
+        cartCtx.removeItem(item, false);
     };
 
-    const cartItemRemoveAllHandler = (id) => {
-        cartCtx.removeItem(id, true);
+    const cartItemRemoveAllHandler = (item) => {
+        cartCtx.removeItem(item, true);
     };
 
     const cartItemAddHandler = (item) => {
@@ -52,8 +50,8 @@ const Cart = () => {
                     price={item.price}
                     color={item.color}
                     picture={item.picture}
-                    onRemove={cartItemRemoveHandler.bind(null, item.id)}
-                    onRemoveAll={cartItemRemoveAllHandler.bind(null, item.id)}
+                    onRemove={cartItemRemoveHandler.bind(null, item)}
+                    onRemoveAll={cartItemRemoveAllHandler.bind(null, item)}
                     onAdd={cartItemAddHandler.bind(null, item)}
                 />
             ))}
@@ -65,23 +63,11 @@ const Cart = () => {
         </React.Fragment>
     );
 
-    const isSubmittingModalContent = <p>Sending order data...</p>;
-
-    const didSubmitModalContent = (
-        <React.Fragment>
-            <p>Successfully sent the order!</p>
-            <div className={classes.actions}>
-
-            </div>
-        </React.Fragment>
-    );
 
     return (<>
             <Box className={classes.title}><h2><FontAwesomeIcon icon={faShoppingBag}/>Winkelmandje</h2></Box>
             <Box>
-                {!isSubmitting && !didSubmit && cartModalContent}
-                {isSubmitting && isSubmittingModalContent}
-                {!isSubmitting && didSubmit && didSubmitModalContent}
+                {cartModalContent}
             </Box>
         </>
     );

@@ -4,15 +4,18 @@ import ProductItemForm from "./ProductItemForm";
 import {useCallback, useContext, useEffect, useState} from "react";
 import CartContext from "../../../store/cart-context";
 import {getProduct} from "../../../api/products/get-product";
-import {Breadcrumb, Col, Container, Row} from "react-bootstrap";
+import {Breadcrumb, Button, Col, Container, Modal, Row} from "react-bootstrap";
 import ImageGallery from 'react-image-gallery';
 import Selector  from '../../UI/Selector';
 import {getAvailableProducts} from "../../../api/products/get-available-products";
 import {NavLink} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+
 
 
 const ProductDetail = () => {
     const {productId} = useParams();
+    const history = useHistory();
     const firebaseUrl = 'https://firebasestorage.googleapis.com/v0/b/webshop-c8940.appspot.com/o/';
     const [product, setProduct] = useState<any>({
         id: 0,
@@ -22,6 +25,10 @@ const ProductDetail = () => {
     const [similarProducts, setSimilarProducts] = useState<any[]>([]);
     const cartCtx = useContext(CartContext);
     const [selectedColor, setSelectedColor] = useState('');
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     const fetchSimilarProducts = useCallback(async() => {
         var responseData = (await getAvailableProducts());
@@ -54,6 +61,10 @@ const ProductDetail = () => {
         setSelectedColor( childData)
     }
 
+    const goToCart = () =>{
+        history.push('/cart');
+    }
+
     const addToCartHandler = (amount: any) => {
         cartCtx.addItem({
             id: productId,
@@ -63,6 +74,7 @@ const ProductDetail = () => {
             color: selectedColor,
             picture: product.picture
         });
+        handleShow();
     };
 
     return (
@@ -89,6 +101,36 @@ const ProductDetail = () => {
                     </div>
                     <ProductItemForm onAddToCart={addToCartHandler}/></Col>
             </Row>
+            <Modal show={show} onHide={handleClose}
+                size="lg"
+                aria-labelledby="contained-modal-title-vcenter"
+                centered
+            >
+                <Modal.Header closeButton>
+                    <Modal.Title>Het product is toegevoegd</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Row>
+                        <Col>
+                            <img className={classes.image} src={`${firebaseUrl}${product.picture}`} alt={product.description}/>
+                        </Col>
+                        <Col>
+                            {product.name}
+                        </Col>
+                        <Col>
+                            {price}
+                        </Col>
+                    </Row>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                        Verder winkelen
+                    </Button>
+                    <Button className={classes.button} onClick={goToCart}>
+                        Naar winkelwagen
+                    </Button>
+                </Modal.Footer>
+            </Modal>
         </Container>
     );
 };
