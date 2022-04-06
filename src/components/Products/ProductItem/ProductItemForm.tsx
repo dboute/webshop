@@ -15,7 +15,6 @@ const ProductItemForm = (props: any, onUpdateCartQty, onRemoveFromCart ) => {
 
     const getPickerValue = (value) =>{
         setAmount(value);
-        console.log(value) // Here you can get the value of the Quantity picker
     }
 
   return (

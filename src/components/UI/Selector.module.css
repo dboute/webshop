@@ -1,38 +1,40 @@
 .item {
-     -webkit-transition: none!important;
-     transition: none!important;
-     border-radius:0px!important;
-     box-shadow: none !important;
-    background:transparent!important;
+    -webkit-transition: none !important;
+    transition: none !important;
+    border-radius: 0px !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    font-size:16px!important;
 }
 
 .item:hover {
-    -webkit-transition: none!important;
-    transition: none!important;
-    border-radius:0px!important;
+    -webkit-transition: none !important;
+    transition: none !important;
+    border-radius: 0px !important;
     box-shadow: none !important;
-    background:transparent!important;
+    background: transparent !important;
 }
 
 .item:active {
-    -webkit-transition: none!important;
-    transition: none!important;
-    border-radius:0px!important;
+    -webkit-transition: none !important;
+    transition: none !important;
+    border-radius: 0px !important;
     box-shadow: none !important;
-    background:transparent!important;
+    background: transparent !important;
 }
 
-.color{
-    height: 15px!important;
-    width: 15px!important;
-    border-radius: 50%!important;
-    display: inline-block!important;
+.color {
+    margin-top:10px;
+    height: 15px !important;
+    width: 15px !important;
+    border-radius: 50% !important;
+    display: inline-block !important;
 }
 
-.select{
-    width: 100%!important;
+.select {
+    width: 100% !important;
 }
 
-.form-control{
-    margin:0px!important;
+.form-control {
+    margin: 0px !important;
 }

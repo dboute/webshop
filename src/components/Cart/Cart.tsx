@@ -28,7 +28,6 @@ const Cart = () => {
     };
 
     const orderHandler = () => {
-        console.log("test");
         history.push('/checkout');
     };
 

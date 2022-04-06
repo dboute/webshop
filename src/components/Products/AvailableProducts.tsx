@@ -69,7 +69,7 @@ const AvailableProducts = () => {
                 </section>}
             { products.length === 0 &&
                 <section className={classes.NoProducts}>
-                    <p>No products available for this category.</p>
+                    <p>No colors available.</p>
                 </section>}
             { httpError &&
                 <section className={classes.ProductsError}>

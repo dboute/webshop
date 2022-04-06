@@ -4,3 +4,18 @@
 .icon{
     margin-right:10px;
 }
+.link {
+    color: #cd958d;
+    text-decoration: none;
+    font-size: 1rem;
+}
+.active {
+    color:  #000000;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.link:hover{
+    color:  #000000;
+    text-decoration: underline;
+}

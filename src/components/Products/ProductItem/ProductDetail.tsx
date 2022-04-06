@@ -48,7 +48,6 @@ const ProductDetail = () => {
 
     const fetchProduct = useCallback(async () => {
         let response = await getProduct(productId);
-        console.log(response);
         setProduct(response);
     }, [productId])
 
