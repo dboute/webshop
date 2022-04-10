@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import classes from './ProductItemForm.module.css';
-import Button from "../../UI/Button";
+import OrderButton from "../../UI/OrderButton";
 import {QuantityPicker} from "../../UI/QuantityPicker";
 
 const ProductItemForm = (props: any, onUpdateCartQty, onRemoveFromCart ) => {
@@ -20,7 +20,7 @@ const ProductItemForm = (props: any, onUpdateCartQty, onRemoveFromCart ) => {
   return (
       <form className={classes.form} onSubmit={submitHandler}>
           <QuantityPicker min={0} max={5} onChange={(getPickerValue)}/>
-          <Button text='Bestel nu!' type='submit' />
+          <OrderButton text='Bestel nu!' type='submit' />
       </form>
   );
 };

@@ -1,8 +1,10 @@
 import classes from './ConfirmationItem.module.css';
 import { Col, Container, Row} from "react-bootstrap";
+import {useTranslation} from "react-i18next";
 
 const ConfirmationItem = (props) => {
     const firebaseUrl = 'https://firebasestorage.googleapis.com/v0/b/webshop-c8940.appspot.com/o/';
+    const {t} = useTranslation('translation');
 
 
     return (
@@ -15,10 +17,10 @@ const ConfirmationItem = (props) => {
                     {props.name}
                     <Row>
                         <Col xs={12} className={classes.item}>
-                            {`Color: ${props.color}`}
+                            {`${t('LITTLE_MOMSTER.COLORS.TITLE')}: ${t(`LITTLE_MOMSTER.COLORS.${props.color?.toUpperCase()}`)}`}
                         </Col>
                         <Col xs={12} className={classes.item}>
-                        {`quantity: ${props.amount}`}
+                            {`${t('LITTLE_MOMSTER.PRODUCTS.QUANTITY')}: ${props.amount}`}
                         </Col>
                     </Row>
                 </Col>

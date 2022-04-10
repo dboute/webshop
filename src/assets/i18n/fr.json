@@ -1,0 +1,88 @@
+{
+  "LITTLE_MOMSTER": {
+    "TITLE": "Little momster",
+    "HOME": {
+      "TITLE": "Home",
+      "TEXT": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ut luctus urna. Donec venenatis, diam vel ultricies ultrices, lacus nunc ornare lacus, eu mollis neque ex ut risus. Donec sollicitudin ultriciessuscipit. Proin nec volutpat felis. Fusce rutrum ultrices pharetra. Praesent pretium, metus euvestibulum hendrerit, sapien lectus ultricies ligula, id fermentum est risus a lectus. Morbi noneleifend nisi. Donec eleifend interdum lobortis. Cras bibendum sollicitudin volutpat. Vestibulum anteipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Morbi pharetra elementum antesed imperdiet. Duis rhoncus nec augue et dictum. Vestibulum vel volutpat dui, euismod lobortis dolor.Aenean eget lacinia metus, et tincidunt est."
+    },
+    "SHOP": {
+      "TITLE": "Shop"
+    },
+    "CONTACT": {
+      "TITLE": "Contact",
+      "US": "Contacteer ons",
+      "NAME": "Naam",
+      "EMAIL": "Email",
+      "TEXT": "Maximum 250 characters"
+    },
+    "ABOUT_US": {
+      "TITLE": "Over ons"
+    },
+    "LANGUAGE": {
+      "TITLE": "Taal"
+    },
+    "SHOPPING_CART": {
+      "TITLE": "Winkelwagen",
+      "TOTAL_AMOUNT": "Totaalbedrag",
+      "ADDRESS": "Adres",
+      "DELIVERY_ADDRESS": "Leveringsadres",
+      "PAYMENT": "Betaling",
+      "FIRST_NAME": "Voornaam",
+      "LAST_NAME": "Achternaam",
+      "POSTAL_CODE": "Postcode",
+      "CITY": "Gemeente",
+      "COUNTRY": "Land",
+      "CONFIRMATION_MAIL": "Bekijk uw inbox voor de bevestigingsmail.",
+      "THANK_YOU": "Bedankt voor uw bestelling!",
+      "ORDER_TOTAL": "Totale bestelling",
+      "ORDER_DATE": "Leveringsdatum",
+      "ORDER_NUMBER": "Bestellingsnummer",
+      "ARTICLES": "Artikelen",
+      "ARTICLE": "Artikel"
+    },
+    "PRODUCTS": {
+      "ALL": "alle producten",
+      "TITLE": "Producten",
+      "BLANKETS": "Dekentjes",
+      "NESTS": "Nestjes",
+      "RATTLES": "Rammelaars",
+      "PACIFIER-CLOTHS": "Speendoekjes",
+      "PACIFIER-CLIPS": "Speenkoorden",
+      "ORDER_NOW": "Bestel nu!",
+      "PRODUCT_ADDED": "Het product is toegevoegd",
+      "CONTINUE": "Verder winkelen",
+      "TO_SHOPPING_CART": "Naar winkelwagen",
+      "QUANTITY": "Hoeveelheid"
+    },
+    "RATTLES": {
+      "GIRAFFE": "Giraf",
+      "BUNNY": "Konijn",
+      "MOUSE": "Muis",
+      "PENGUIN": "Penguïn",
+      "BEAR": "Beer",
+      "ELEPHANT": "Olifant",
+      "SHEEP": "Schaap"
+    },
+    "PACIFIER-CLIPS": {
+      "PACIFIER_CLIP": "Speenkoord"
+    },
+    "PACIFIER-CLOTHS": {
+      "PACIFIER_CLOTH": "Speenkdoekje"
+    },
+    "NESTS": {
+      "NEST": "Nestje"
+    },
+    "BLANKETS": {
+      "BLANKET": "Dekentje"
+    },
+    "COLORS": {
+      "TITLE": "Kleur",
+      "GRAY": "Grijs",
+      "WHITE": "Wit",
+      "PINK": "Roze",
+      "BLUE": "Blauw",
+      "GREEN": "Groen",
+      "RED": "Rood"
+    }
+  }
+}

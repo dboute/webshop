@@ -3,9 +3,11 @@ import {QuantityPicker} from "../UI/QuantityPicker";
 import {Button, Col, Container, Row} from "react-bootstrap";
 import {faTrash} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {useTranslation} from "react-i18next";
 
 const CartItem = (props) => {
     const firebaseUrl = 'https://firebasestorage.googleapis.com/v0/b/webshop-c8940.appspot.com/o/';
+    const {t} = useTranslation('translation');
 
     const price = `€${props.price.toFixed(2)}`;
     const total = props.price * props.amount;
@@ -18,7 +20,7 @@ const CartItem = (props) => {
                     <img className={classes.image} src={`${firebaseUrl}${props.picture}`} alt={props.description}/>
                 </Col>
                 <Col xs={6} className={classes.itemTitle}>
-                    {props.name} - {props.color}
+                    {props.name} - {t(`LITTLE_MOMSTER.COLORS.${props.color?.toUpperCase()}`)}
                 </Col>
             </Row>
             <Row>

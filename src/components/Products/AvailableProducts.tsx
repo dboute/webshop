@@ -4,9 +4,9 @@ import ProductItem from './ProductItem/ProductItem';
 import classes from './AvailableProducts.module.css';
 import LoadingSpinner from "../UI/LoadingSpinner";
 import {getAvailableProducts} from "../../api/products/get-available-products";
-import {useParams} from 'react-router-dom';
+import {NavLink, useParams} from 'react-router-dom';
 import {Breadcrumb} from "react-bootstrap";
-import {NavLink} from 'react-router-dom';
+import {useTranslation} from "react-i18next";
 
 
 const AvailableProducts = () => {
@@ -14,6 +14,7 @@ const AvailableProducts = () => {
         const [isLoading, setIsLoading] = useState(true);
         const [httpError, setHttpError] = useState();
         const {type} = useParams();
+        const {t} = useTranslation('translation');
 
         useEffect(() => {
             const fetchProducts = async () => {
@@ -59,28 +60,28 @@ const AvailableProducts = () => {
             <section className={classes.products}>
                 <Breadcrumb>
                     <Breadcrumb.Item>
-                        <NavLink to='/products' className={classes.link}>alle producten</NavLink>
+                        <NavLink to='/products' className={classes.link}>{t('LITTLE_MOMSTER.PRODUCTS.ALL')}</NavLink>
                     </Breadcrumb.Item>
                 </Breadcrumb>
-            <h2 className={classes.center}>{type}</h2>
-            { isLoading &&
-                <section className={classes.ProductsLoading}>
-                    <LoadingSpinner/>
-                </section>}
-            { products.length === 0 &&
-                <section className={classes.NoProducts}>
-                    <p>No colors available.</p>
-                </section>}
-            { httpError &&
-                <section className={classes.ProductsError}>
-                    <p>{httpError}</p>
-                </section>}
-            <Grid container justifyContent="center" spacing={1}>
-                {productsList.map((value) => (<Grid key={value.key} item>
-                    {value}
-                </Grid>))}
-            </Grid>
-        </section>);
+                <h2 className={classes.center}>{t(`LITTLE_MOMSTER.PRODUCTS.${type?.toUpperCase()}`)}</h2>
+                {isLoading &&
+                    <section className={classes.ProductsLoading}>
+                        <LoadingSpinner/>
+                    </section>}
+                {products.length === 0 &&
+                    <section className={classes.NoProducts}>
+                        <p>No colors available.</p>
+                    </section>}
+                {httpError &&
+                    <section className={classes.ProductsError}>
+                        <p>{httpError}</p>
+                    </section>}
+                <Grid container justifyContent="center" spacing={1}>
+                    {productsList.map((value) => (<Grid key={value.key} item>
+                        {value}
+                    </Grid>))}
+                </Grid>
+            </section>);
     }
 ;
 

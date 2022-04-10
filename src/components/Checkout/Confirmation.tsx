@@ -3,11 +3,13 @@ import classes from './Confirmation.module.css';
 import CartContext from '../../store/cart-context';
 import {Box} from "@mui/material";
 import ConfirmationItem from "./ConfirmationItem";
+import {useTranslation} from "react-i18next";
 
 const Confirmation = () => {
     const cartCtx = useContext<any>(CartContext);
     const [items,setItems] = useState(cartCtx.items);
     const [totalAmount,setTotalAmount] = useState(`€${cartCtx.totalAmount.toFixed(2)}`);
+    const {t} = useTranslation('translation');
 
     cartCtx.clearCart();
 
@@ -23,14 +25,14 @@ const Confirmation = () => {
 
     const cartModalContent = (
         <React.Fragment>
-            <p className={classes.subTitle}>Bekijk uw inbox voor de bevestigingsmail.</p>
+            <p className={classes.subTitle}>{t('LITTLE_MOMSTER.SHOPPING_CART.CONFIRMATION_MAIL')}</p>
             <Box>
-                <p>Totale bestelling: {totalAmount}</p>
-                <p>Leveringsdatum: { getCurrentDate()}</p>
-                <p>Bestellingsnummer: LM00501</p>
+                <p>{t('LITTLE_MOMSTER.SHOPPING_CART.ORDER_TOTAL')}: {totalAmount}</p>
+                <p>{t('LITTLE_MOMSTER.SHOPPING_CART.ORDER_DATE')}: { getCurrentDate()}</p>
+                <p>{t('LITTLE_MOMSTER.SHOPPING_CART.ORDER_NUMBER')}: LM00501</p>
             </Box>
-            { items.length > 1 && <Box className={classes.title}><h2>{`${items.length} Items`}</h2></Box> }
-            { items.length < 1 && <Box className={classes.title}><h2>{`${items.length} Item`}</h2></Box> }
+            { items.length !== 1 && <Box className={classes.title}><h2>{`${items.length} ${t('LITTLE_MOMSTER.SHOPPING_CART.ARTICLES')}`}</h2></Box> }
+            { items.length === 1 && <Box className={classes.title}><h2>{`${items.length} ${t('LITTLE_MOMSTER.SHOPPING_CART.ARTICLE')}`}</h2></Box> }
             {items.map((item) => (
                 <ConfirmationItem
                     key={item.id}
@@ -45,7 +47,7 @@ const Confirmation = () => {
     );
 
     return (<>
-            <Box className={classes.title}><h1>Bedankt voor uw bestelling!</h1></Box>
+            <Box className={classes.title}><h1>{t('LITTLE_MOMSTER.SHOPPING_CART.THANK_YOU')}</h1></Box>
             <Box>
                 { cartModalContent}
             </Box>

@@ -1,11 +1,13 @@
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {NavLink} from 'react-router-dom';
 import {faFacebookF, faGoogle, faInstagram, faLinkedin, faTwitter} from '@fortawesome/free-brands-svg-icons';
-import {faEnvelope, faHome, faPhone, faRainbow} from '@fortawesome/free-solid-svg-icons';
+import {faEnvelope, faHome, faRainbow} from '@fortawesome/free-solid-svg-icons';
 import classes from './Footer.module.css';
+import {useTranslation} from "react-i18next";
 
 
 const Footer = () => {
+    const {t} = useTranslation('translation');
 
     return (
 
@@ -46,26 +48,31 @@ const Footer = () => {
                         </div>
                         <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
                             <h6 className="text-uppercase fw-bold mb-4">
-                                Products
+                                {t('LITTLE_MOMSTER.PRODUCTS.TITLE')}
                             </h6>
                             <p>
-                                <NavLink to='/products' className={classes.link}>
-                                    Nestjes
+                                <NavLink to='/products/blankets' className={classes.link}>
+                                    {t('LITTLE_MOMSTER.PRODUCTS.BLANKETS')}
                                 </NavLink>
                             </p>
                             <p>
-                                <NavLink to='/products' className={classes.link}>
-                                    Dekentjes
+                                <NavLink to='/products/nests' className={classes.link}>
+                                    {t('LITTLE_MOMSTER.PRODUCTS.NESTS')}
                                 </NavLink>
                             </p>
                             <p>
-                                <NavLink to='/products' className={classes.link}>
-                                    Tuttenkoorden
+                                <NavLink to='/products/rattles' className={classes.link}>
+                                    {t('LITTLE_MOMSTER.PRODUCTS.RATTLES')}
                                 </NavLink>
                             </p>
                             <p>
-                                <NavLink to='/products' className={classes.link}>
-                                    Rammelaars
+                                <NavLink to='/products/pacifier-cloths' className={classes.link}>
+                                    {t('LITTLE_MOMSTER.PRODUCTS.PACIFIER-CLOTHS')}
+                                </NavLink>
+                            </p>
+                            <p>
+                                <NavLink to='/products/pacifier-clips' className={classes.link}>
+                                    {t('LITTLE_MOMSTER.PRODUCTS.PACIFIER-CLIPS')}
                                 </NavLink>
                             </p>
                         </div>
@@ -96,21 +103,21 @@ const Footer = () => {
                         </div>
                         <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
                             <h6 className="text-uppercase fw-bold mb-4">
-                                Contact
+                                {t('LITTLE_MOMSTER.CONTACT.TITLE')}
                             </h6>
-                            <p><FontAwesomeIcon icon={faHome} className='me-3'/> Camille Coolsstraat <br/> 15 8890
-                                Moorslede</p>
+                            <p><FontAwesomeIcon icon={faHome} className='me-3'/>Keizerstraat 55 8510
+                                Marke</p>
                             <p>
                                 <FontAwesomeIcon icon={faEnvelope} className='me-3'/>
-                                info@littlemomster.com
+                                littlemomster2@gmail.com
                             </p>
-                            <p><FontAwesomeIcon icon={faPhone} className='me-3'/> 0468 13 72 29</p>
+                            {/*<p><FontAwesomeIcon icon={faPhone} className='me-3'/> 0468 13 72 29</p>*/}
                         </div>
                     </div>
                 </div>
             </section>
             <div className="text-center p-4" style={{backgroundColor: 'rgba(0, 0, 0, 0.05)'}}>
-                © 2022 Copyright:
+                © 2022 Copyright
                 <NavLink to ='/' className={classes.link}> Little Momster</NavLink>
             </div>
         </footer>

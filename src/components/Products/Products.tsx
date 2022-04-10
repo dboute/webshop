@@ -1,12 +1,9 @@
 import {useEffect, useState} from 'react';
 import Grid from '@material-ui/core/Grid';
-import ProductItem from './ProductItem/ProductItem';
 import classes from './Products.module.css';
 import LoadingSpinner from "../UI/LoadingSpinner";
 import {getAvailableProducts} from "../../api/products/get-available-products";
 import {useParams} from 'react-router-dom';
-import {Breadcrumb} from "react-bootstrap";
-import {NavLink} from 'react-router-dom';
 import ProductType from "./ProductType";
 
 
@@ -61,15 +58,15 @@ const Products = () => {
         return (
             <section className={classes.products}>
                 <h2 className={classes.center}>{type}</h2>
-                { isLoading &&
+                {isLoading &&
                     <section className={classes.ProductsLoading}>
                         <LoadingSpinner/>
                     </section>}
-                { products.length === 0 &&
+                {products.length === 0 &&
                     <section className={classes.NoProducts}>
                         <p>No products available for this category.</p>
                     </section>}
-                { httpError &&
+                {httpError &&
                     <section className={classes.ProductsError}>
                         <p>{httpError}</p>
                     </section>}

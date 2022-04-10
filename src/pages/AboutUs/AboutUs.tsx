@@ -1,11 +1,14 @@
 import React from 'react';
 import {Col, Container, Row} from "react-bootstrap";
 import classes from "./AboutUs.module.css";
+import {useTranslation} from "react-i18next";
 
 const AboutUs = () => {
+    const {t} = useTranslation('translation');
+
     return (<Container>
         <Row className={classes.center}>
-            <h2>Over ons</h2>
+            <h2>{t('LITTLE_MOMSTER.ABOUT_US.TITLE')}</h2>
         </Row>
         <Row className={classes.row}>
             <Col xs={12} className={classes.col}>

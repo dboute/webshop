@@ -1,17 +1,24 @@
-import {useParams} from 'react-router-dom';
+import {NavLink, useHistory, useParams} from 'react-router-dom';
 import classes from './ProductDetail.module.css';
-import ProductItemForm from "./ProductItemForm";
 import {useCallback, useContext, useEffect, useState} from "react";
 import CartContext from "../../../store/cart-context";
 import {getProduct} from "../../../api/products/get-product";
 import {Breadcrumb, Button, Col, Container, Modal, Row} from "react-bootstrap";
 import ImageGallery from 'react-image-gallery';
-import Selector  from '../../UI/Selector';
 import {getAvailableProducts} from "../../../api/products/get-available-products";
-import {NavLink} from 'react-router-dom';
-import { useHistory } from 'react-router-dom';
+import {Controller, useForm} from "react-hook-form";
+import {FormControl, FormHelperText} from "@mui/material";
+import ColorSelector from '../../UI/ColorSelector';
+import {QuantityPicker} from "../../UI/QuantityPicker";
+import OrderButton from "../../UI/OrderButton";
+import {ColorResource} from "../../../api/products/color-resource";
+import {useTranslation} from "react-i18next";
 
 
+interface ProductDetailForm {
+    quantity;
+    color;
+}
 
 const ProductDetail = () => {
     const {productId} = useParams();
@@ -20,17 +27,31 @@ const ProductDetail = () => {
     const [product, setProduct] = useState<any>({
         id: 0,
         name: 'test',
-        price: 10
+        price: 10,
+        type: 'RATTLES'
     });
     const [similarProducts, setSimilarProducts] = useState<any[]>([]);
     const cartCtx = useContext(CartContext);
     const [selectedColor, setSelectedColor] = useState('');
     const [show, setShow] = useState(false);
+    const {t} = useTranslation('translation');
+
+    const submitHandler = () => {
+        addToCartHandler(getValues("quantity"));
+    };
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const fetchSimilarProducts = useCallback(async() => {
+    const {
+        handleSubmit,
+        control,
+        getValues,
+        trigger,
+        formState: {errors, isValid},
+    } = useForm<ProductDetailForm>({reValidateMode: 'onSubmit', mode: 'onSubmit'});
+
+    const fetchSimilarProducts = useCallback(async () => {
         var responseData = (await getAvailableProducts());
 
         for (const key in responseData) {
@@ -54,13 +75,13 @@ const ProductDetail = () => {
     useEffect(() => {
         fetchProduct();
         fetchSimilarProducts();
-    }, [fetchProduct,fetchSimilarProducts])
+    }, [fetchProduct, fetchSimilarProducts])
 
-    const handleCallback = (childData) =>{
-        setSelectedColor( childData)
+    const handleCallback = (childData) => {
+        setSelectedColor(childData)
     }
 
-    const goToCart = () =>{
+    const goToCart = () => {
         history.push('/cart');
     }
 
@@ -75,62 +96,133 @@ const ProductDetail = () => {
         });
         handleShow();
     };
+    const onError = (e) => console.log('error--->', e);
 
     return (
-
-        <Container className={classes.products}>
-            <Breadcrumb>
-                <Breadcrumb.Item>
-                    <NavLink to='/products' className={classes.link}>alle producten</NavLink>
-                </Breadcrumb.Item>
-                <Breadcrumb.Item>
-                    <NavLink to={`/products/${product.type}`} className={classes.link}>{product.type}</NavLink>
-                </Breadcrumb.Item>
-            </Breadcrumb>
-            <Row>
-                <Col>
-                    <ImageGallery items={similarProducts} showFullscreenButton={false} showPlayButton={false} showThumbnails={similarProducts.length > 1} show/>
-                </Col>
-                <Col className={classes.detail}>
-                    <h3>{product.name}</h3>
-                    <div className={classes.description}>{product.description}</div>
-                    <div className={classes.price}>{price}</div>
-                    <div className={classes.color}>
-                        <Selector parentCallback = {handleCallback}/>
-                    </div>
-                    <ProductItemForm onAddToCart={addToCartHandler}/></Col>
-            </Row>
-            <Modal show={show} onHide={handleClose}
-                size="lg"
-                aria-labelledby="contained-modal-title-vcenter"
-                centered
-            >
-                <Modal.Header closeButton>
-                    <Modal.Title>Het product is toegevoegd</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <Row>
-                        <Col>
-                            <img className={classes.image} src={`${firebaseUrl}${product.picture}`} alt={product.description}/>
-                        </Col>
-                        <Col>
-                            {product.name}
-                        </Col>
-                        <Col>
-                            {price}
-                        </Col>
-                    </Row>
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        Verder winkelen
-                    </Button>
-                    <Button className={classes.button} onClick={goToCart}>
-                        Naar winkelwagen
-                    </Button>
-                </Modal.Footer>
-            </Modal>
-        </Container>
+        <form onSubmit={handleSubmit(submitHandler, onError)}>
+            <Container className={classes.products}>
+                <Breadcrumb>
+                    <Breadcrumb.Item>
+                        <NavLink to='/products' className={classes.link}>{t('LITTLE_MOMSTER.PRODUCTS.ALL')}</NavLink>
+                    </Breadcrumb.Item>
+                    <Breadcrumb.Item>
+                        <NavLink to={`/products/${product.type}`}
+                                 className={classes.link}>{t(`LITTLE_MOMSTER.PRODUCTS.${product.type.toUpperCase()}`)}</NavLink>
+                    </Breadcrumb.Item>
+                </Breadcrumb>
+                <Row>
+                    <Col>
+                        <ImageGallery items={similarProducts} showFullscreenButton={false} showPlayButton={false}
+                                      showThumbnails={similarProducts.length > 1} show/>
+                    </Col>
+                    <Col className={classes.detail}>
+                        <h3>{t(`LITTLE_MOMSTER.${product.type?.toUpperCase()}.${product.name?.toUpperCase()}`)}</h3>
+                        <div className={classes.description}>{product.description}</div>
+                        <div className={classes.price}>{price}</div>
+                        <div className={classes.color}>
+                            <Controller
+                                name="color"
+                                control={control}
+                                rules={{
+                                    required: 'Select a color',
+                                }}
+                                defaultValue={null}
+                                render={({field: {ref, ...rest}}) => (
+                                    <FormControl className='formControl' fullWidth sx={{margin: 0, minWidth: 240}}>
+                                        <ColorSelector parentCallback={handleCallback}
+                                                       {...rest}
+                                                       id="color"
+                                                       inputProps={{
+                                                           'aria-label': 'color',
+                                                           ref,
+                                                           onFocus: (e) => e.target.select(),
+                                                       }}
+                                                       inputRef={ref as any}
+                                                       required
+                                                       onChange={(e, option: { label: string; value: ColorResource }) => {
+                                                           rest.onChange(option);
+                                                           trigger('color');
+                                                       }}
+                                        />
+                                        {errors.color && (
+                                            <FormHelperText variant="outlined" error={!!errors.color} component="div">
+                                                {errors.color?.message || ''}
+                                            </FormHelperText>
+                                        )}
+                                    </FormControl>
+                                )}
+                            />
+                        </div>
+                        <Controller
+                            name="quantity"
+                            control={control}
+                            rules={{
+                                required: 'Enter a quantity',
+                            }}
+                            defaultValue={null}
+                            render={({field: {ref, ...rest}}) => (
+                                <FormControl className='formControl' fullWidth sx={{margin: 0, minWidth: 240}}>
+                                    <QuantityPicker min={0} max={10}
+                                                    {...rest}
+                                                    id="quantity"
+                                                    inputProps={{
+                                                        'aria-label': 'quantity',
+                                                        ref,
+                                                        onFocus: (e) => e.target.select(),
+                                                    }}
+                                                    inputRef={ref as any}
+                                                    required
+                                                    onChange={async (option) => {
+                                                        if (option) {
+                                                            rest.onChange(option)
+                                                        }
+                                                        trigger('color');
+                                                    }}
+                                    />
+                                    {errors.quantity && (
+                                        <FormHelperText variant="outlined" error={!!errors.quantity} component="div">
+                                            {errors.quantity?.message || ''}
+                                        </FormHelperText>
+                                    )}
+                                </FormControl>
+                            )}
+                        />
+                        <OrderButton text={t('LITTLE_MOMSTER.PRODUCTS.ORDER_NOW')} type='submit'
+                                     disabled={!isValid}/></Col>
+                </Row>
+                <Modal show={show} onHide={handleClose}
+                       size="lg"
+                       aria-labelledby="contained-modal-title-vcenter"
+                       centered
+                >
+                    <Modal.Header closeButton>
+                        <Modal.Title>{t('LITTLE_MOMSTER.PRODUCTS.PRODUCT_ADDED')}</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <Row>
+                            <Col>
+                                <img className={classes.image} src={`${firebaseUrl}${product.picture}`}
+                                     alt={product.description}/>
+                            </Col>
+                            <Col>
+                                {t(`LITTLE_MOMSTER.${product.type?.toUpperCase()}.${product.name?.toUpperCase()}`)}
+                            </Col>
+                            <Col>
+                                {price}
+                            </Col>
+                        </Row>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={handleClose}>
+                            {t('LITTLE_MOMSTER.PRODUCTS.CONTINUE')}
+                        </Button>
+                        <Button className={classes.button} onClick={goToCart}>
+                            {t('LITTLE_MOMSTER.PRODUCTS.TO_SHOPPING_CART')}
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
+            </Container>
+        </form>
     );
 };
 

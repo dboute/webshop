@@ -3,7 +3,14 @@ import {BrowserRouter} from 'react-router-dom';
 import App from './App';
 import React from "react";
 import MessengerCustomerChat from 'react-messenger-customer-chat';
-import { initializeApp } from 'firebase/app'
+import {initializeApp} from 'firebase/app'
+import translationEnApp from './assets/i18n/en.json';
+import translationFrApp from './assets/i18n/fr.json';
+import translationNlApp from './assets/i18n/nl.json';
+import {getTranslations} from "./utils/get-translations";
+import i18next from "i18next";
+import { initReactI18next } from 'react-i18next';
+
 
 const firebaseConfig = {
     apiKey: "AIzaSyBNv9rPCZm55i6x_km2unzlDqjlUWvjP30",
@@ -20,14 +27,40 @@ initializeApp(firebaseConfig)
 
 export const webshopRef = firebaseConfig.databaseURL
 
-ReactDOM.render(
-    <BrowserRouter>
-        <App />
-        <MessengerCustomerChat
-            pageId="106868175219891"
-            appId="923162928397581"
-            themeColor={'#cc8e84'}
-        />
-    </BrowserRouter>,
-    document.getElementById('root')
-);
+const initI18Next = async () => {
+    const translationEnLibs = await getTranslations('en');
+    const translationFrLibs = await getTranslations('fr');
+    const translationNlLibs = await getTranslations('nl');
+    i18next
+        .use(initReactI18next)
+        .init({
+            resources: {
+                en: {
+                    translation: {...translationEnLibs, ...translationEnApp},
+                },
+                fr: {
+                    translation: {...translationFrLibs, ...translationFrApp},
+                },
+                nl: {
+                    translation: {...translationNlLibs, ...translationNlApp},
+                },
+            },
+            lng: 'fr',
+            fallbackLng: 'fr',
+        })
+        .then(() => {
+            ReactDOM.render(
+                <BrowserRouter>
+                    <App/>
+                    <MessengerCustomerChat
+                        pageId="106868175219891"
+                        appId="923162928397581"
+                        themeColor={'#cc8e84'}
+                    />
+                </BrowserRouter>,
+                document.getElementById('root')
+            );
+        });
+};
+
+initI18Next();

@@ -1,16 +1,18 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext} from 'react';
 import CartItem from './CartItem';
 import classes from './Cart.module.css';
 import CartContext from '../../store/cart-context';
 import {faShoppingBag} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {Box} from "@mui/material";
-import Button from "../UI/Button";
+import OrderButton from "../UI/OrderButton";
 import { useHistory } from 'react-router-dom';
+import {useTranslation} from "react-i18next";
 
 const Cart = () => {
     const cartCtx = useContext<any>(CartContext);
     const history = useHistory();
+    const {t} = useTranslation('translation');
 
     const totalAmount = `€${cartCtx.totalAmount.toFixed(2)}`;
     const hasItems = cartCtx.items.length > 0;
@@ -34,7 +36,7 @@ const Cart = () => {
     const modalActions = (
         <div className={classes.actions}>
             {hasItems && (
-                <Button text='Bestel nu!' onClick={orderHandler} />
+                <OrderButton text={t('LITTLE_MOMSTER.PRODUCTS.ORDER_NOW')} onClick={orderHandler} />
             )}
         </div>
     );
@@ -55,7 +57,7 @@ const Cart = () => {
                 />
             ))}
             <div className={classes.total}>
-                <span>Total Amount</span>
+                <span>{t('LITTLE_MOMSTER.SHOPPING_CART.TOTAL_AMOUNT')}</span>
                 <span>{totalAmount}</span>
             </div>
             {modalActions}
@@ -64,7 +66,7 @@ const Cart = () => {
 
 
     return (<>
-            <Box className={classes.title}><h2><FontAwesomeIcon icon={faShoppingBag}/>Winkelmandje</h2></Box>
+            <Box className={classes.title}><h2><FontAwesomeIcon icon={faShoppingBag}/>{t('LITTLE_MOMSTER.SHOPPING_CART.TITLE')}</h2></Box>
             <Box>
                 {cartModalContent}
             </Box>
